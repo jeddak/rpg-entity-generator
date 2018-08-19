@@ -1,5 +1,5 @@
 template:
-  template_name: human
+  template_name: Man-At-Arms
   # lithe 1, medium 2, heavy 3
   buildnum: \% 1D3 \%
   build: \%  [Build| {template/buildnum}] \%
@@ -58,59 +58,45 @@ template:
       hp: \% ( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5   \%
       name: Head
   combat_styles:
-    - name: Brotherhood of the Carrion Scavenger (Mancatcher trait) 
-      value: \% 2d20+53 \%
+    - name: Man-at-Arms 
+      value: \% 2d20+45 \%
       weapons:
-        - ap: 1
+        - ap: 6
           add_damage_modifier: true
-          name: Poisonous bite 
+          name: sword 
           type: 1h-melee 
           range: n/a
-          hp: 5 
-          reach: T 
-          damage: 1d3 
-          effects: Bleed, Inject Venom
-          size: M
-        - ap: 1
+          hp: 12
+          reach: M
+          damage: 1d8 
+          effects: Bleed, Impale
+          size: L
+          enc: 2
+          traits: none
+        - ap: 6
           add_damage_modifier: true
-          name: Claw
+          name: Shield
           type: 1h-melee
           range: n/a
-          hp: 5
+          hp: 12
           reach: S
-          damage: 1d3
+          damage: 1d4
           effects: Bleed, Grip
-          size: M
+          size: L
+          enc: 2
+          traits: Ranged Parry; Passive-Blocks 3 locations
         - ap: 1
           add_damage_modifier: true
-          name: Tail
+          name: Spear
           type: 1h-melee
           range: n/a
           hp: 4
           reach: M
-          damage: 1d4
-          effects: none 
-          size: M
-        - ap: 2
-          add_damage_modifier: true
-          name: Whip (Barbed)
-          type: 1h-melee
-          range: n/a
-          hp: 8
-          reach: VL
-          damage: 1d3
-          effects: Stun Loc, Entangle
-          size: M
-        - ap: 5
-          add_damage_modifier: true
-          name: Daichui
-          type: 2h-melee
-          range: n/a
-          hp: 8
-          reach: VL
-          damage: 1d6
-          effects: Bash, Entangle, Stun Loc
-          size: M
+          damage: 1d8+1
+          effects: Impale 
+          size: S
+          enc: 2
+          traits: Set, Thrown
   standard_skills:
     Athletics: \%{template/stats/STR} + {template/stats/DEX}\% 
     Boating: \%{template/stats/STR} + {template/stats/CON}\%
@@ -172,4 +158,3 @@ template:
     Trance: \%{template/stats/POW} + {template/stats/CON}\%
   other_languages: none
   notes: Quilted Leather
-  
