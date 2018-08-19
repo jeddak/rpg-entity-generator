@@ -1,0 +1,7 @@
+table:
+  name: Build
+  y-axis: number
+  entries: 
+    "1": "Lithe"
+    "2": "Medium"
+    "3": "Heavy"

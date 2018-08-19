@@ -1,0 +1,62 @@
+table:
+  name: Medieval Human Combat Styles
+  y-axis: combat style name
+  entries: 
+    "Knight": 
+      "1": sword
+      "2": dagger
+      "3": mace
+      "4": axe
+      "5": spear
+      "6": shield
+      "7": greatsword
+      "8": lance
+    "Peasant Levy": 
+      "1": spear
+      "2": cudgel
+      "3": knife
+      "4": sword
+      "5": shield
+    "Bandit": 
+      "1": spear
+      "2": club
+      "3": knife
+      "4": sword
+      "5": shield
+    "Man-at-Arms": 
+      "1": sword
+      "2": dagger
+      "3": mace
+      "4": axe
+      "5": spear
+      "6": shield
+      "7": greatsword
+      "8": lance
+      "9": longbow
+      "10": crossbow
+    "Mercenary Soldier": 
+      "1": sword
+      "2": dagger
+      "3": mace
+      "4": axe
+      "5": spear
+      "6": shield
+      "7": greatsword
+      "8": lance
+      "9": longbow
+      "10": crossbow
+      "11": halberd
+    "Pikeman": 
+      "1": pike
+      "2": shortsword
+    "Crossbowman": 
+      "1": crossbow
+      "2": dagger
+      "3": shortsword
+      "4": pavise
+    "Longbowman": 
+      "1": longbow
+      "2": dagger
+      "3": shortsword
+      "4": hatchet
+      

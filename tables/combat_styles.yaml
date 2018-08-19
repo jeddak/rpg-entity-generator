@@ -1,0 +1,28 @@
+table:
+  name: Medieval Human Combat Styles
+  y-axis: number
+  entries: 
+    "1": Knight
+    #(sword, mace, spear, sword/shield, mace/shield, spear/shield, greatsword, mounted lance, Mounted Combat)
+
+    "2": Peasant Levy
+    #, or Bandit (sword, spear, sword/shield, spear/shield) -- NB this is usually a low-skill soldier, possibly conscripted and trained for just a few weeks before being thrust into battle.  Occasionally given other training, depending on the foe levied to fight.
+
+    "3": Bandit
+    # no formal training.  Add "Club" to the bandit's armory!  Sometimes, they don't have metal weapons...
+
+    "3": Man-at-Arms
+    #(sword, mace, spear, sword/shield, mace/shield, spear/shield, bow or crossbow) -- This would be a soldier of the "standing army" -- originally one of the Levied peasants who caught the eye of a noble or a senior MaA, and gets extra / ongoing training, returning from the farm/village/etc year after year.
+
+    "4": Mercenary
+    #(sword, mace, spear, sword/shield, mace/shield, spear/shield, Pole-Arm, bow or crossbow, maybe others) -- the classic "professional soldier" with a well-rounded suite of skills.  Note the "pole-arm" -- this would be something that can engage with a mounted knight & pull him off his horse!
+
+
+    "6": Pikeman
+    #(pike, shortsword) -- Although your time is about 100 years before the rise of the "Swiss Pikeman" of late-medieval fame, specialized mass-pike-formation training was still one of the common answers to the knight.
+
+    "7": Crossbowman
+    #(crossbow, dagger, pavese) -- Originally part of Genoa's civil defense force, they gained fame in the Crusades & became a feared&courted mercenary force by the mid/late 1200's.
+
+    "8": Longbowman
+    #arguably, they don't belong in your setting.  The battle of Cressy/Crecy in the mid 1300's was their first notable use.  Many argue that the "great bow" or "war bow" was a late refinement or the original Welsh hunting-bow that so hurt the English; Northallerton (1138) saw decisive bow effects by the English against the Scotts, but it appears to have been a lighter bow, used in a more-scattered (not massed bow-fire) fashion.  

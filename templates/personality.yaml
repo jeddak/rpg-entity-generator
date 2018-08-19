@@ -1,0 +1,32 @@
+template:
+  template_name: human_personality
+  Primary_Motivator: \% [personality_motivator|1D100] \%
+  Emotional_Disposition: \% [personality_emotional_disposition|1D100] \%
+  Moodiness: \% 1D100 \%
+  Core_Outlook: \% 1D100 \%
+  Core_Integrity: \% 1D100 \%
+  Core_Impulsiveness: \% 1D100 \%
+  Core_Boldness: \% 1D100 \%
+  Core_Flexibility: \% 1D100 \%
+  Core_Affinity: \% 1D100 \%
+  Core_Comportment: \% 1D100 \%
+  Core_Interactivity: \% 1D100 \%
+  Core_Sense of Humor: \% personality_sense_humor|1D100 \%
+  Core_Disclosure: \% 1D100 \%
+  Core_Conformity: \% 1D100 \%
+  Sex_Orientation: \% [personality_sex_orientation|1D100] \%
+  Sex_Libido: \% 1D100 \%
+  Sex_Expressiveness: \% 1D100 \%
+  Sex_Expressive_Style: \% 1D100 \%
+  Sex_Openness: \% 1D100 \%
+  Sex_Promiscuity: \% 1D100 \%
+  Sex_Tastes: \% [personality_sex_tastes|1D100] \%
+  Religious_Adherence_Score: \% 1D100 \%
+  Religious_Adherence_Desc: \% [personality_religious_adherence|{template/Religious_Adherence_Score}] \%
+  Religious_Tolerance: \% 1D100 \%
+  Religious_Expression: \% 1D100 \%
+  Religious_Proselytizing: \% 1D100 \%
+  Religious_Attitude: \% 1D100 \%
+  Quirk: \% [personality_quirks|1D100] \%
+  Enjoyment: \% [personality_enjoyment|1D100] \%
+

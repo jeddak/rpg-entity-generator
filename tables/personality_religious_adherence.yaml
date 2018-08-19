@@ -1,0 +1,8 @@
+table:
+  name: personality_religious_adherence
+  y-axis: number
+  entries: 
+    "[1-25]": atheist
+    "[26-50]": agnostic
+    "[51-75]": casual adherent
+    "[86-100]": orthodox adherent

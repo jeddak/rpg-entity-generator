@@ -1,0 +1,99 @@
+template:
+  template_name: Gargoyle
+  Description: "Gargoyles are a malicious race of beings that delight in the torture and humiliation of their prey. This prey can consist of dungeon vermin like giant rats and bats up to and including bands of adventurers.  \n\
+Gargoyles have large bat-like wings and are capable if rather ungainly flyers. They possess a rough grey stone-like skin that allows them to easily blend with their surroundings, often taking on the form of the rather evil-looking statues typical of ‘normal’ gargoyles. \n\
+In combat, gargoyles attack in large numbers, rending flesh with their long hard talons. They will also either bite their opponents with sharp jagged teeth or use the long horns that spiral from their back of their head to rip deeply through their prey. If remaining completely motionless against a rocky background, a gargoyle’s Stealth skill roll is 2 grades easier. However, many will just position themselves among other gargoyle-like statues in an attempt to be mistaken for harmless stone. 
+They do not require sustenance, attacking and inflicting injury on victims just for the enjoyment and they can stand motionless indefinitely. \n\
+A lair of gargoyles may contain between 4 and 16 individuals."
+  height: 
+  weight: 
+  sex:  \% [Sex|1d2] \%
+  stats:
+    STR: \%2d6+9 \%
+    CON: \%4d6 \%
+    SIZ: \%2d6+9 \%
+    DEX: \%3d6 \%
+    INT: \%1D6+4 \%
+    POW: \%2D6+6 \%
+    CHA: \%1D6 \%
+  attributes   : &id001
+      action_points      : 2
+      damage_modifier    : 1D2
+      healing_rate       : \%  (( {template/stats/CON} -1 ) / 6 ) +1 \%
+      initiative_bonus   : 10
+      movement           : 4 (ground), 8 (flying)
+      magic_points       : 13
+      armour: Tough, abrasive hide
+      abilities: Camouflaged, Diving Strike, Flying, Infravision, Formidable Natural Weapons
+  hit_locations: 
+    - ap   : 8
+      range: 01-03 
+      hp   : 6
+      name : Right leg
+    - ap   : 8 
+      range: 04-06 
+      hp   : 6
+      name : Left leg
+    - ap: 8
+      range: 07-09 
+      hp: 7
+      name: Abdomen
+    - ap: 8 
+      range: 10
+      hp: 8
+      name: Chest
+    - ap: 8 
+      range: 11-12 
+      hp: 6
+      name: Right wing
+    - ap: 8 
+      range: 13-14 
+      hp: 6
+      name: Left wing
+    - ap: 8 
+      range: 15-16 
+      hp: 5
+      name: Right arm
+    - ap: 8 
+      range: 17-18 
+      hp: 5
+      name: Left arm
+    - ap: 8 
+      range: 19-20 
+      hp: 6
+      name: Head
+  skills:
+    Athletics:  \% ( {template/stats/STR} + {template/stats/DEX}) * 3 \%
+    Brawn:  \% ( {template/stats/STR} + {template/stats/SIZ} ) + 20 \%
+    Endurance: \% {template/stats/CON} * 5 \% 
+    Evade: \%{template/stats/DEX} * 4 \% 
+    Fly: \% ( {template/stats/STR} + {template/stats/DEX} ) * 2 \%
+    Language (Gargoyle): 52
+    Perception: \% (({template/stats/INT} + {template/stats/POW}) *2 ) + 10 \%
+    Stealth: \% ( {template/stats/DEX} + {template/stats/INT} ) * 3 \% 
+    Track:  \% ( {template/stats/INT} + {template/stats/CON} ) * 3\%
+    Willpower: \% {template/stats/INT} * 8   \% 
+
+  combat_styles:
+    - name: Death From Above
+      value: \% 59 + 1D6 \%
+      weapons:
+        - name: Bite
+          size/force: M
+          reach: T
+          damage: \% 1d6 + 1D4 \%
+          ap: 8 (as for head)
+          hp: 6 (as for head)
+        - name: Claw
+          size/force: M
+          reach: M
+          damage: \% 1d4 + 1D4 \%
+          ap: 8 (as for arm)
+          hp: 5 (as for arm)
+        - name: Horn
+          size/force: M
+          reach: S
+          damage: \% 1d6 + 1D4 \%
+          ap: 8 (as for head)
+          hp: 6 (as for head)
+ 

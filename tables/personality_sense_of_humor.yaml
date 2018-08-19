@@ -1,0 +1,14 @@
+table:
+  name: personality_sense_of_humor
+  y-axis: number
+  entries:
+    "[1-10]": Crude
+    "[11-20]": Dry
+    "[51-60]": Pranks
+    "[61-70]": Mean-spirited
+    "[21-30]": Slapstick
+    "[31-40]": Jokey
+    "[41-50]": Cynical
+    "[71-80]": Gleeful
+    "[81-90]": Surreal
+    "[91-100]": None

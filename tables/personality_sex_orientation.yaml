@@ -1,0 +1,7 @@
+table:
+  name: personality_sex_orientation
+  y-axis: number
+  entries: 
+    "[1-87]": heterosexual
+    "[88-94]": bisexual
+    "[94-100]": homosexual

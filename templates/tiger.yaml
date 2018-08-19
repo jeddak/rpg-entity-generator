@@ -1,0 +1,90 @@
+template:
+  template_name: Tiger
+  Description: "With the exception of smilodon, tigers are the largest of the big
+cats. Highly territorial and generally solitary (save for females with
+cubs) they frequent many different climates including arctic envi-
+ronments. Their natural camouflage, usually with the characteris-
+tic black stripes, means they can move with high stealth, increasing
+their ambush capabilities. The pattern of stripes is unique to each
+tiger, and helps the animals to conceal themselves amongst the shadows, foliage and long grass as they stalk their prey.\n\
+The chief means of attack is the powerful bite, followed by claw
+rakes. A hungry tiger is tenacious and will stalk prey for a great distance if driven by an empty stomach. They are undeterred by prey
+larger themselves although these cats are still cautious given that -
+generally - they do not hunt in large numbers, and have little in the
+way of support.
+"
+  height: n/a
+  weight: n/a
+  sex:  \% [Sex|1d2] \%
+  stats:
+    STR: \%2d6+15 \%
+    CON: \%2d6+6 \%
+    SIZ: \%2d6+18 \%
+    DEX: \%2d6+12 \%
+    INS: \%2d6+6 \%
+    POW: \%2D6 \%
+  attributes   : &id001
+      action_points      : 3
+      damage_modifier    : 1D10
+      healing_rate       : \%  (( {template/stats/CON} -1 ) / 6 ) +1 \%
+      initiative_bonus   : 16
+      movement           : 8
+      magic_points       : 7
+      armour: Fur and hide
+      abilities: Camouflage, Intimidate, Night Sight
+  hit_locations: 
+    - ap   : 2
+      range: 01-02
+      hp   : 8
+      name : Right hind leg
+    - ap   : 2 
+      range: 03-04 
+      hp   : 8
+      name : Left hind leg
+    - ap: 2
+      range: 05-07 
+      hp: 9
+      name: Hindquarters
+    - ap: 2 
+      range: 8-10
+      hp: 10
+      name: Forequarters
+    - ap: 2 
+      range: 11-13 
+      hp: 8
+      name: Right front leg
+    - ap: 2 
+      range: 14-16 
+      hp: 8
+      name: Left front leg
+    - ap: 2 
+      range: 17-20 
+      hp: 8
+      name: Head
+  skills:
+    Athletics:  \% (( {template/stats/STR} + {template/stats/DEX} -3) * 2) \%   71
+    Brawn:  \% ( {template/stats/STR} + {template/stats/SIZ} ) +20  \%
+    Endurance: \% {template/stats/CON} * 5 \%
+    Evade: \%( {template/stats/DEX} * 3 ) + 10  \%
+    Perception: \% ((({template/stats/INS} + {template/stats/POW}) *2 ) *3) \%
+    Stealth: \% (( {template/stats/DEX} + {template/stats/INS} * 2) + 10) \% 
+    Track:  \% (( {template/stats/INS} + {template/stats/CON} ) * 2) + 4\% 
+    Willpower: \% ( {template/stats/INS} * 4)   \%
+
+  combat_styles:
+    - name: Striped Death (teeth, claws)
+      value: \% 78 + 1D8 \%
+      weapons:
+        - name: Bite
+          size/force: L
+          reach: S
+          damage: \% 1d8 + 1D10 \%
+          ap: 2 (as for head)
+          hp: 8 (as for head)
+        - name: Claw
+          size/force: L
+          reach: M
+          damage: \% 1d6 + 1D12 \%
+          ap: 2 (as for leg)
+          hp: 8 (as for leg)
+ 

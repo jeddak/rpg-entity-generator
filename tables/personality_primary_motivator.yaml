@@ -1,0 +1,31 @@
+table:
+  name: personality_motivator
+  y-axis: number
+  entries: 
+    "[1-5]": Achievement   #To overcome obstacles and succeed; to become the best
+    "[6-10]": Acquisition   #To obtain possessions/wealth
+    "[11-15]": Balance/Peace   #To bring all things into harmony and equilibrium
+    "[16-20]": Beneficence   #To protect the helpless, heal the sick, feed the hungry, etc.
+    "[21-25]": Chaos   #To disrupt, to cause confusion and discord
+    "[26-30]": Creation   #To build or make new, such as art, culture, invention, design,etc.
+    "[31-35]": Destruction   #To annihilate, exterminate, unmake, and bring to ruin
+    "[36-40]": Discovery/Adventure   #To explore, uncover mysteries, and pioneer
+    "[41-45]": Education   #To provide information, teach, enlighten, or train
+    "[46-50]": Enslavement   #To force others into servitude
+    "[51-55]": Hedonism   #To enjoy all things sensuous
+    "[56-60]": Liberation   #To free the self and/or others from perceived captivity or enslavement
+    "[61-65]": Nobility/Honor   #To exalt ideals such as generosity, honesty, bravery, and courtliness
+    "[66-70]": Order   #To arrange, organize, and reduce chaos
+    "[71-75]": Play   #To have fun, to enjoy life
+    "[76-80]": Power   #To control and lead others
+    "[81-85]": Recognition   #To gain approval, social status, or fame
+    "[86-90]": Service   #To follow a person, government, order, religion, etc.
+    "[91-95]": Torment   #To inflict pain and suffering, on others and/or the self
+    "[91-100]": Understanding   #To seek knowledge or wisdom (spiritual, scientific, magical,etc)
+
+
+
+# Domesticity: to get married, have children, and live a family life
+# Tranquility: to live a life with minimal conflict or disturbance
+# Rebellion: to act out against or contrary to any and all forms of authority
+# Competition: to enter into or create zero-sum opportunities to win over others

@@ -1,0 +1,6 @@
+table:
+  name: Sex
+  y-axis: number
+  entries: 
+    "1": Male
+    "2": Female

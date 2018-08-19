@@ -1,0 +1,175 @@
+template:
+  template_name: human
+  # lithe 1, medium 2, heavy 3
+  buildnum: \% 1D3 \%
+  build: \%  [Build| {template/buildnum}] \%
+  # height formula doesn't work for SIZ < 8
+  height: \% 110 + ( {template/stats/SIZ} * 5 ) + 1D5 \% cm
+  # weight formula doesn't work for SIZ < 8 - replace with table lookup
+  weight: \% ( {template/stats/SIZ} * (5 + ({template/buildnum} * 2)) )   \% kg
+  sex:  \% [Sex|1d2] \%
+  name: \% [Names|{template/sex}|1d4391] \%
+  stats:
+    STR: \% 3d6 \%
+    CON: \% 3d6 \%
+    SIZ: \% 2d6+6 \%
+    DEX: \% 2d6+6 \%
+    POW: \% 3d6 \%
+    CHA: \% 3d6 \%
+    INT: \% 3d6 \%
+  attributes   : &id001
+      action_points      : \% ((( {template/stats/INT} + {template/stats/DEX} ) -1 ) / 12 ) + 1  \%
+   # kind of a hack   
+      damage_modifier    : \% ((( {template/stats/STR} + {template/stats/SIZ} ) -1 ) / 5 ) - 4   \%
+      experience_modifier: \%  (( {template/stats/CHA} -1 ) / 6 ) -1 \%
+      healing_rate       : \%  (( {template/stats/CON} -1 ) / 6 ) +1 \%
+      luck_points        : \%  (( {template/stats/POW} -1 ) / 6 ) +1 \%
+      initiative_bonus   : \%   ( {template/stats/INT} + {template/stats/DEX} ) / 2   \%
+      movement           : 6
+      magic_points       : \% {template/stats/POW} \%
+  hit_locations: 
+    - ap   : 3
+      range: 01-03 
+      hp   : \% ( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5   \%
+      name : Right leg
+    - ap   : 3 
+      range: 04-06 
+      hp   : \% ( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5   \%
+      name : Left leg
+    - ap: 3 
+      range: 07-09 
+      hp: \% (( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5 ) + 1  \%
+      name: Abdomen
+    - ap: 3 
+      range: 10-12 
+      hp: \% (( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5 ) + 2  \%
+      name: Chest
+      # formula doesn't work for arms when (CON+SIZ) <=5
+    - ap: 3 
+      range: 13-15 
+      hp: \% (( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5  ) - 1  \%
+      name: Right Arm
+    - ap: 3 
+      range: 16-18 
+      hp: \% (( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5 ) - 1  \%
+      name: Left Arm
+    - ap: 3 
+      range: 19-20 
+      hp: \% ( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5   \%
+      name: Head
+  combat_styles:
+    - name: Brotherhood of the Carrion Scavenger (Mancatcher trait) 
+      value: \% 2d20+53 \%
+      weapons:
+        - ap: 1
+          add_damage_modifier: true
+          name: Poisonous bite 
+          type: 1h-melee 
+          range: n/a
+          hp: 5 
+          reach: T 
+          damage: 1d3 
+          effects: Bleed, Inject Venom
+          size: M
+        - ap: 1
+          add_damage_modifier: true
+          name: Claw
+          type: 1h-melee
+          range: n/a
+          hp: 5
+          reach: S
+          damage: 1d3
+          effects: Bleed, Grip
+          size: M
+        - ap: 1
+          add_damage_modifier: true
+          name: Tail
+          type: 1h-melee
+          range: n/a
+          hp: 4
+          reach: M
+          damage: 1d4
+          effects: none 
+          size: M
+        - ap: 2
+          add_damage_modifier: true
+          name: Whip (Barbed)
+          type: 1h-melee
+          range: n/a
+          hp: 8
+          reach: VL
+          damage: 1d3
+          effects: Stun Loc, Entangle
+          size: M
+        - ap: 5
+          add_damage_modifier: true
+          name: Daichui
+          type: 2h-melee
+          range: n/a
+          hp: 8
+          reach: VL
+          damage: 1d6
+          effects: Bash, Entangle, Stun Loc
+          size: M
+  standard_skills:
+    Athletics: \%{template/stats/STR} + {template/stats/DEX}\% 
+    Boating: \%{template/stats/STR} + {template/stats/CON}\%
+    Brawn: \%{template/stats/STR} + {template/stats/SIZ}\%
+    Conceal: \%{template/stats/DEX} + {template/stats/POW}\%
+    Customs: \%{template/stats/INT} * 2 \%
+    Dance: \%{template/stats/DEX} + {template/stats/CHA}\%
+    Deceit: \%{template/stats/INT} + {template/stats/CHA}\%
+    Endurance: \%{template/stats/CON} * 2 \%
+    Evade: \%{template/stats/DEX} * 2 \%
+    First Aid: \%{template/stats/DEX} + {template/stats/INT}\%
+    Influence: \%{template/stats/CHA} * 2 \%
+    Insight: \%{template/stats/INT} + {template/stats/POW}\%
+    Locale: \%{template/stats/INT} * 2 \%
+    Native tongue: \%{template/stats/INT} + {template/stats/CHA}\%
+    Perception: \%{template/stats/INT} + {template/stats/POW}\%
+    Ride:  \%{template/stats/DEX} + {template/stats/POW}\%
+    Sing: \%{template/stats/POW} + {template/stats/CHA}\%
+    Stealth: \%{template/stats/DEX} + {template/stats/INT}\%
+    Survival: \%{template/stats/STR} + {template/stats/DEX}\%
+    Swim: \%{template/stats/STR} + {template/stats/CON}\%
+    Unarmed: \%{template/stats/STR} + {template/stats/DEX}\%
+    Willpower: \%{template/stats/POW} * 2 \%
+  professional_skills:
+    Acting: \%{template/stats/CHA} * 2 \%
+    Acrobatics: \%{template/stats/STR} + {template/stats/DEX}\%
+    Art: \%{template/stats/POW} + {template/stats/CHA}\%
+    Binding: \%{template/stats/POW} + {template/stats/CHA}\%
+    Bureaucracy: \%{template/stats/INT} * 2 \%
+    Commerce: \%{template/stats/INT} + {template/stats/CHA}\%
+    Courtesy: \%{template/stats/INT} + {template/stats/CHA}\%
+    Craft: \%{template/stats/DEX} + {template/stats/INT}\%
+    Culture: \%{template/stats/INT} * 2 \%
+    Devotion: \%{template/stats/POW} + {template/stats/CHA}\%
+    Disguise: \%{template/stats/INT} + {template/stats/CHA}\%
+    Engineering: \%{template/stats/INT} * 2 \%
+    Exhort: \%{template/stats/INT} + {template/stats/CHA}\%
+    Folk_Magic: \%{template/stats/POW} + {template/stats/CHA}\%
+    Gambling: \%{template/stats/INT} + {template/stats/POW}\%
+    Healing: \%{template/stats/INT} + {template/stats/POW}\%
+    Invocation: \%{template/stats/INT} * 2 \%
+    Literacy: \%{template/stats/INT} * 2 \%
+    Lockpicking: \%{template/stats/DEX} * 2 \%
+    Lore: \%{template/stats/INT} * 2 \%
+    Mechanisms: \%{template/stats/DEX} + {template/stats/INT}\%
+    Meditation: \%{template/stats/INT} + {template/stats/CON}\%
+    Musicianship: \%{template/stats/DEX} + {template/stats/CHA}\%
+    Mysticism: \%{template/stats/POW} + {template/stats/CON}\%
+    Navigation: \%{template/stats/INT} + {template/stats/POW}\%
+    Oratory: \%{template/stats/POW} + {template/stats/CHA}\%
+    Seamanship: \%{template/stats/INT} + {template/stats/CON}\%
+    Seduction: \%{template/stats/INT} + {template/stats/CHA}\%
+    Shaping: \%{template/stats/INT} + {template/stats/POW}\%
+    Sleight: \%{template/stats/DEX} + {template/stats/CHA}\%
+    Streetwise: \%{template/stats/POW} + {template/stats/CHA}\%
+    Survival: \%{template/stats/CON} + {template/stats/POW}\%
+    Teach: \%{template/stats/INT} + {template/stats/CHA}\%
+    Track: \%{template/stats/INT} + {template/stats/CON}\%
+    Trance: \%{template/stats/POW} + {template/stats/CON}\%
+  other_languages: none
+  notes: Quilted Leather
+  

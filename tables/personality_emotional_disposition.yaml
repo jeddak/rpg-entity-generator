@@ -1,0 +1,15 @@
+table:
+  name: personality_disposition
+  y-axis: number
+  entries: 
+    "1-10": Joyful
+    "11-20": Anxious
+    "21-30": Melancholy
+    "31-40": Curious
+    "41-50": Calm
+    "51-60": Angry
+    "61-70": Contemptuous
+    "71-80": Excited
+    "81-90": Apathetic
+    "91-100": Ashamed
+    

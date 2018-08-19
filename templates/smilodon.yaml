@@ -1,0 +1,105 @@
+template:
+  template_name: Smilodon
+  Description: "Often known as sabre-toothed tigers, although
+this is a misnomer, these big cats are noted for
+both their intimidating physical size and pronounced canine fangs which arch
+down well below the lower jaw
+and average around 30 centimetres in length. Smilodon are
+incredibly robust and strong
+when compared with other
+big cats – especially in their
+forequarters.
+  \n\
+Built for power rather
+than speed, they are ambush
+hunters, using height to leap
+down on their prey, combining the delivery of a stabbing
+downward thrust with their
+incisors together with the
+impact of their sheer bulk
+to overwhelm their victims.
+Death is usually delivered by crushing the windpipe, a task made easier if the prey has
+been surprised, stabbed and then crushed under smilodon’s
+weight.  \n\
+Smilodon hunt in small family packs of
+between three and eight animals, although
+lone smilodon are also known. Their powerful forelimbs mean they are excellent
+climbers, and so they make use of any
+naturally high terrain to ambush their
+prey.
+"
+  height: 
+  weight: 
+  sex:  \% [Sex|1d2] \%
+  stats:
+    STR: \%2d6+15 \%
+    CON: \%2d6+6 \%
+    SIZ: \%2d6+25 \%
+    DEX: \%2d6+9 \%
+    INS: \%2d6+6 \%
+    POW: \%2D6 \%
+  attributes   : &id001
+      action_points      : 3
+      damage_modifier    : 1D12
+      healing_rate       : \%  (( {template/stats/CON} -1 ) / 6 ) +1 \%
+      initiative_bonus   : 15
+      movement           : 8
+      magic_points       : 7
+      armour: Fur and hide
+      abilities: Intimidate, Leaper, Night Sight
+  hit_locations: 
+    - ap   : 2
+      range: 01-02
+      hp   : 9
+      name : Right hind leg
+    - ap   : 2 
+      range: 03-04 
+      hp   : 9
+      name : Left hind leg
+    - ap: 2
+      range: 05-07 
+      hp: 10
+      name: Hindquarters
+    - ap: 2 
+      range: 8-10
+      hp: 11
+      name: Forequarters
+    - ap: 2 
+      range: 11-13 
+      hp: 9
+      name: Right front leg
+    - ap: 2 
+      range: 14-16 
+      hp: 9
+      name: Left front leg
+    - ap: 2 
+      range: 17-20 
+      hp: 9
+      name: Head
+  skills:
+    Athletics:  \% ( {template/stats/STR} + {template/stats/DEX}) * 2 \%
+    Brawn:  \% ( {template/stats/STR} + {template/stats/SIZ} ) + 30 \%
+    Endurance: \% {template/stats/CON} * 5 \% 
+    Evade: \%( {template/stats/DEX} * 3 ) + 4 \% 
+    Perception: \% ((({template/stats/INS} + {template/stats/POW}) *2 ) *2 ) + 10 \%
+    Stealth: \% (( {template/stats/DEX} + {template/stats/INS} * 2) + 10 ) * 3 \% 
+    Track:  \% ( {template/stats/INS} + {template/stats/CON} -1 ) * 3\%
+    Willpower: \% ( {template/stats/INS} * 3) + 5   \% 
+
+  combat_styles:
+    - name: Smilodon Ambush (teeth, claws)
+      value: \% 72 + 1D8 \%
+      weapons:
+        - name: Bite
+          size/force: H
+          reach: M
+          damage: \% 1d10 + 1D12 \%
+          ap: 2 (as for head)
+          hp: 9 (as for head)
+        - name: Claw
+          size/force: L
+          reach: M
+          damage: \% 1d8 + 1D12 \%
+          ap: 2 (as for leg)
+          hp: 9 (as for leg)
+ 
