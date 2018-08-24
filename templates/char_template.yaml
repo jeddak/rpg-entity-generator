@@ -1,12 +1,15 @@
 template:
-  template_name: Man-At-Arms
+  template_name: Rookie Man-At-Arms
+  Description: A rookie man-at-arms
   # lithe 1, medium 2, heavy 3
   buildnum: \% 1D3 \%
   build: \%  [Build| {template/buildnum}] \%
   # height formula doesn't work for SIZ < 8
-  height: \% 110 + ( {template/stats/SIZ} * 5 ) + 1D5 \% cm
+  #height: \% 110 + ( {template/stats/SIZ} * 5 ) + 1D5 \% cm
+  height: \% [Human Height|{template/stats/SIZ}] \%
   # weight formula doesn't work for SIZ < 8 - replace with table lookup
-  weight: \% ( {template/stats/SIZ} * (5 + ({template/buildnum} * 2)) )   \% kg
+  #weight: \% ( {template/stats/SIZ} * (5 + ({template/buildnum} * 2)) )   \% kg
+  weight: \% [Human Weight|{template/build}|{template/stats/SIZ}] \%
   sex:  \% [Sex|1d2] \%
   name: \% [Names|{template/sex}|1d4391] \%
   stats:
@@ -20,7 +23,8 @@ template:
   attributes   : &id001
       action_points      : \% ((( {template/stats/INT} + {template/stats/DEX} ) -1 ) / 12 ) + 1  \%
    # kind of a hack   
-      damage_modifier    : \% ((( {template/stats/STR} + {template/stats/SIZ} ) -1 ) / 5 ) - 4   \%
+ #     damage_modifier    : \% ((( {template/stats/STR} + {template/stats/SIZ} ) -1 ) / 5 ) - 4   \%
+      damage_modifier: \% [ Damage Modifier | ( {template/stats/STR} + {template/stats/SIZ} ) ] \%
       experience_modifier: \%  (( {template/stats/CHA} -1 ) / 6 ) -1 \%
       healing_rate       : \%  (( {template/stats/CON} -1 ) / 6 ) +1 \%
       luck_points        : \%  (( {template/stats/POW} -1 ) / 6 ) +1 \%
@@ -60,65 +64,29 @@ template:
   combat_styles:
     - name: Man-at-Arms 
       value: \% 2d20+45 \%
-      weapons:
-        - ap: 6
-          add_damage_modifier: true
-          name: sword 
-          type: 1h-melee 
-          range: n/a
-          hp: 12
-          reach: M
-          damage: 1d8 
-          effects: Bleed, Impale
-          size: L
-          enc: 2
-          traits: none
-        - ap: 6
-          add_damage_modifier: true
-          name: Shield
-          type: 1h-melee
-          range: n/a
-          hp: 12
-          reach: S
-          damage: 1d4
-          effects: Bleed, Grip
-          size: L
-          enc: 2
-          traits: Ranged Parry; Passive-Blocks 3 locations
-        - ap: 1
-          add_damage_modifier: true
-          name: Spear
-          type: 1h-melee
-          range: n/a
-          hp: 4
-          reach: M
-          damage: 1d8+1
-          effects: Impale 
-          size: S
-          enc: 2
-          traits: Set, Thrown
+      weapons: \{  \% [Medieval Weapons|Broadsword], [Medieval Weapons|Chevron], [Medieval Weapons|Longspear] \%    \}
   standard_skills:
-    Athletics: \%{template/stats/STR} + {template/stats/DEX}\% 
-    Boating: \%{template/stats/STR} + {template/stats/CON}\%
-    Brawn: \%{template/stats/STR} + {template/stats/SIZ}\%
-    Conceal: \%{template/stats/DEX} + {template/stats/POW}\%
+    Athletics: \%{template/stats/STR} + {template/stats/DEX} \% 
+    Boating: \%{template/stats/STR} + {template/stats/CON} \%
+    Brawn: \%{template/stats/STR} + {template/stats/SIZ} \%
+    Conceal: \%{template/stats/DEX} + {template/stats/POW} \%
     Customs: \%{template/stats/INT} * 2 \%
-    Dance: \%{template/stats/DEX} + {template/stats/CHA}\%
-    Deceit: \%{template/stats/INT} + {template/stats/CHA}\%
+    Dance: \%{template/stats/DEX} + {template/stats/CHA} \%
+    Deceit: \%{template/stats/INT} + {template/stats/CHA} \%
     Endurance: \%{template/stats/CON} * 2 \%
     Evade: \%{template/stats/DEX} * 2 \%
-    First Aid: \%{template/stats/DEX} + {template/stats/INT}\%
+    First Aid: \%{template/stats/DEX} + {template/stats/INT} \%
     Influence: \%{template/stats/CHA} * 2 \%
-    Insight: \%{template/stats/INT} + {template/stats/POW}\%
+    Insight: \%{template/stats/INT} + {template/stats/POW} \%
     Locale: \%{template/stats/INT} * 2 \%
-    Native tongue: \%{template/stats/INT} + {template/stats/CHA}\%
-    Perception: \%{template/stats/INT} + {template/stats/POW}\%
-    Ride:  \%{template/stats/DEX} + {template/stats/POW}\%
-    Sing: \%{template/stats/POW} + {template/stats/CHA}\%
-    Stealth: \%{template/stats/DEX} + {template/stats/INT}\%
-    Survival: \%{template/stats/STR} + {template/stats/DEX}\%
-    Swim: \%{template/stats/STR} + {template/stats/CON}\%
-    Unarmed: \%{template/stats/STR} + {template/stats/DEX}\%
+    Native tongue: \%{template/stats/INT} + {template/stats/CHA} \%
+    Perception: \%{template/stats/INT} + {template/stats/POW} \%
+    Ride:  \%{template/stats/DEX} + {template/stats/POW} \%
+    Sing: \%{template/stats/POW} + {template/stats/CHA} \%
+    Stealth: \%{template/stats/DEX} + {template/stats/INT} \%
+    Survival: \%{template/stats/STR} + {template/stats/DEX} \%
+    Swim: \%{template/stats/STR} + {template/stats/CON} \%
+    Unarmed: \%{template/stats/STR} + {template/stats/DEX} \%
     Willpower: \%{template/stats/POW} * 2 \%
   professional_skills:
     Acting: \%{template/stats/CHA} * 2 \%

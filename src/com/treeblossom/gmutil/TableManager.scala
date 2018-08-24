@@ -40,13 +40,14 @@ object TableManager {
    * @param tableFileName
    */
   def loadTableFile(tableFileName: String): Unit = {
-    println("loading " + tableFileName)
+    //print("loading " + tableFileName)//DEBUG
     var tableFile = new File(tableFileName)
     var yamlParser: org.yaml.snakeyaml.Yaml = new Yaml
     var yamlFile: Reader = new FileReader(tableFile)
     var rootNode: LinkedHashMap[String, Object] = yamlParser.load(yamlFile)
     var tableNode: LinkedHashMap[String, Object] = rootNode.get("table").asInstanceOf[LinkedHashMap[String, Object]]
     var tableName: String = tableNode.get("name").asInstanceOf[String]
+    //println(" ( " + tableName + " )")//DEBUG
     var newLookupTable: LookupTable = new LookupTable(tableName)
     var yLabel: String = tableNode.get("y-axis").asInstanceOf[String]
     newLookupTable.yAxisLabel = yLabel

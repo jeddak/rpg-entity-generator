@@ -30,17 +30,21 @@ object EntityGenerator {
   val REF_PATTERN: Regex = """\{[a-zA-Z|_|/| ]+\}""".r
   val DICEROLLSPEC_PATTERN: Regex = """[0-9]+[dD][0-9]+""".r
   val DICEROLLSPEC_DECONSTRUCT_PATTERN: Regex = """([0-9]+)[dD]([0-9]+)""".r
-  val TABLELOOKUP_PATTERN: Regex = """\[([^|]+)\|([^|]+)\|*(.+)*\]""".r
+  val TABLELOOKUP_PATTERN: Regex = """\[([^|^\]]+)\|([^|^\]]+)\|*([^\]]+)*\]""".r
+
   val ALPHA_PATTERN: Regex = """\p{Alpha}""".r
+  val ARITHMETIC_EXPR_PATTERN: Regex = """[+|-|/|+|^|*]""".r
+  
   val toolbox = currentMirror.mkToolBox() // This is actually spinning up a runtime(!), ideal.
 
-  val INDICATOR_KEY_VAL_SEPARATOR = " :"
+  val INDICATOR_KEY_VAL_SEPARATOR = ": "
   val INDICATOR_SEQUENCE_ENTRY = "- "
 
   var rootNode: LinkedHashMap[String, Object] = null
 
   val tableManager = TableManager
   tableManager.loadMaps("/home/jdonald/devwork/scala/rpg-entity-generator/tables") //TODO get tables path from args(1)
+  
   /**
    * Walk a parsed yaml-document tree.
    *
@@ -128,18 +132,39 @@ object EntityGenerator {
       traverseList(nodeAsList, newLevel)
     } else printNodeValue(node)
   }
+  
+  /**
+   * Returns true if it looks as though valueStr could be evaluated as an arithmetic expression.
+   */
+  def containsArithmeticExpression(valueStr :String):Boolean = {
+     if (valueStr.trim().length > 0) {
+        //if result contains alpha characters, don't try to evaluate it mathematically
+        ALPHA_PATTERN.findFirstIn(valueStr) match {
+          case Some(alphaFound) => false
+          case None             => {
+            ARITHMETIC_EXPR_PATTERN.findFirstIn(valueStr) match {
+              case Some(mathFound) => true
+              case None => false
+            }
+          }
+        }
+      } else {
+        false
+      }
+  }
 
   /**
    *
    */
   def outputStringMapEntry(key: String, value: String, level: Int, isFirst: Boolean) {
+    var newVal = resolveNodeValue(value)
     var output =
       if (!isFirst) {
         FILL.substring(0, (level * INDENT))
       } else {
         FILL.substring(0, (level * INDENT) - INDENT) + INDICATOR_SEQUENCE_ENTRY
       }
-    println(output + key + INDICATOR_KEY_VAL_SEPARATOR + value)
+    println(output + key + INDICATOR_KEY_VAL_SEPARATOR + newVal)
   }
 
   /**
@@ -165,13 +190,8 @@ object EntityGenerator {
       result = resolveReferences(result) // not working for template/weight
       result = resolveDiceRollSpecs(result)
       result = resolveTableLookups(result)
-      if (result.trim().length > 0) {
-        //if result contains alpha characters, don't try to evaluate it mathematically
-        ALPHA_PATTERN.findFirstIn(result) match {
-          case Some(alphaFound) => result
-          case None             => evaluateAsArithmetic(result)
-        }
-
+      if (result.trim().length > 0 && containsArithmeticExpression(result)) {
+        evaluateAsArithmetic(result)
       } else {
         result
       }
@@ -254,7 +274,6 @@ object EntityGenerator {
 
   /**
    * Look up value from a table.
-   * TODO get the regex working
    */
   def resolveTableLookup(strIn: String): String = {
     var result = strIn
@@ -263,13 +282,27 @@ object EntityGenerator {
       case Some(lookupStr) => {
         var tableName: String = lookupStr.group(1).trim()
         var yParam: String = lookupStr.group(2).trim()
+        
+        //TODO if yParam is an arithmetic expression, try to resolve it first before doing the lookup
+        if (yParam.trim().length > 0 && containsArithmeticExpression(yParam)) {
+           yParam = evaluateAsArithmetic(yParam)
+        }
+        
         var xParm: Option[String] = None
         Try(
           if (lookupStr.group(3) != null) {
             var x = lookupStr.group(3)
             xParm = Some(x.trim())
-
+            
+            //TODO if xParm is an arithmetic expression, try to resolve it first before doing the lookup
+            xParm match {
+              case Some(xParam) => {
+               xParm = Some(evaluateAsArithmetic(xParam))
+              }
+            }
           })
+
+        
         var table: Option[LookupTable] = tableManager.get(tableName)
         table.foreach(t =>
           xParm match {
@@ -380,8 +413,13 @@ object EntityGenerator {
     //println(resolveDiceRollSpecs("4D6 something 2D8+3"))
 
     //traverse(findNode(rootNode,"template/hit_locations"),"hit_locations",0,false,false)
-
+    // println (resolveNodeValue("\\% [Medieval Weapons|Broadsword]  \\% "))
+    //println (resolveNodeValue("\\% [Medieval Weapons|Broadsword] , [Medieval Weapons|Chevron] ,  [Medieval Weapons|Longspear] \\% "))
+    //println(containsArithmeticExpression("2 A + 3"))
     traverse(rootNode, "template", 0, false, false)
+    
+    
+    
 
   }
 }
