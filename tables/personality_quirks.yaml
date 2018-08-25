@@ -2,53 +2,53 @@ table:
   name: personality_quirks
   y-axis: number
   entries: 
-    "01-02": Humming 
-    "03-04": Dancing
-    "05-06": Sleepwalking
-    "07-08": Facial tics
-    "09-10": Exhibitionism
-    "11-12": Fingernail biting
-    "13-14": Eavesdropping
-    "15-16": Daydreaming
-    "17-18": Talking in sleep
-    "19-20": Stuttering
-    "21-22": Compulsive lying
-    "23-24": Whistling
-    "25-26": Name dropping
-    "27-28": Self-inflict pain/injury
-    "29-30": Mumbling
-    "31-32": Constant grooming
-    "33-34": Foot tapping
-    "35-36": Lip biting/licking
-    "37-38": Coin flipping
-    "39-40": Chewing (e.g. sticks, small bones)
-    "41-42": Knuckle cracking
-    "43-44": Collects odd things
-    "45-46": Singing
-    "47-48": Snacking (nuts, seeds, etc.)
-    "49-50": Reciting poetry
-    "51-52": Constant eating
-    "53-54": Pacing
-    "55-56": Blade sharpening
-    "57-58": Counting
-    "59-60": Hair pulling
-    "61-62": Snoring
-    "63-64": Walking backwards
-    "65-66": Teeth sucking
-    "67-68": Excessively touching others
-    "69-70": Substance use (non-addicted)
-    "71-72": Hair pulling
-    "73-74": Animal hater
-    "75-76": Insomnia
-    "77-78": Beard/hair stroking
-    "79-80": Nose picking
-    "81-82": Needless apologizing
-    "83-84": Exaggeration
-    "85-86": Superstitious (omens, luck, etc.)
-    "87-88": Belching
-    "89-90": Sleeping in odd places
-    "91-92": Repeating others
-    "93-94": Smelling things
-    "95-96": Teeth picking
-    "97-98": Stealing
-    "99-100": Tree climbing
+    "[01-02]": "Humming"
+    "[03-04]": "Dancing"
+    "[05-06]": "Sleepwalking"
+    "[07-08]": "Facial tics"
+    "[09-10]": "Exhibitionism"
+    "[11-12]": "Fingernail biting"
+    "[13-14]": "Eavesdropping"
+    "[15-16]": "Daydreaming"
+    "[17-18]": "Talking in sleep"
+    "[19-20]": "Stuttering"
+    "[21-22]": "Compulsive lying"
+    "[23-24]": "Whistling"
+    "[25-26]": "Name dropping"
+    "[27-28]": "Self-inflict pain/injury"
+    "[29-30]": "Mumbling"
+    "[31-32]": "Constant grooming"
+    "[33-34]": "Foot tapping"
+    "[35-36]": "Lip biting/licking"
+    "[37-38]": "Coin flipping"
+    "[39-40]": "Chewing (e.g. sticks, small bones)"
+    "[41-42]": "Knuckle cracking"
+    "[43-44]": "Collects odd things"
+    "[45-46]": "Singing"
+    "[47-48]": "Snacking (nuts, seeds, etc.)"
+    "[49-50]": "Reciting poetry"
+    "[51-52]": "Constant eating"
+    "[53-54]": "Pacing"
+    "[55-56]": "Blade sharpening"
+    "[57-58]": "Counting"
+    "[59-60]": "Hair pulling"
+    "[61-62]": "Snoring"
+    "[63-64]": "Walking backwards"
+    "[65-66]": "Teeth sucking"
+    "[67-68]": "Excessively touching others"
+    "[69-70]": "Substance use (non-addicted)"
+    "[71-72]": "Hair pulling"
+    "[73-74]": "Animal hater"
+    "[75-76]": "Insomnia"
+    "[77-78]": "Beard/hair stroking"
+    "[79-80]": "Nose picking"
+    "[81-82]": "Needless apologizing"
+    "[83-84]": "Exaggeration"
+    "[85-86]": "Superstitious (omens, luck, etc.)"
+    "[87-88]": "Belching"
+    "[89-90]": "Sleeping in odd places"
+    "[91-92]": "Repeating others"
+    "[93-94]": "Smelling things"
+    "[95-96]": "Teeth picking"
+    "[97-98]": "Stealing"
+    "[99-100]": "Tree climbing"

@@ -2,14 +2,14 @@ table:
   name: personality_sex_tastes
   y-axis: number
   entries:
-    "[1-25]": ordinary
-    "[26-33]": bondage
-    "[34-41]": cross-dressing
-    "[42-49]": role-playing
-    "[50-57]": spanking
-    "[58-65]": massaging
-    "[66-73]": masochism
-    "[74-81]": exhibitionism
-    "[82-89]": orgies
-    "[90-97]": voyeurism
-    "[98-100]": other
+    "[1-25]": "ordinary"
+    "[26-33]": "bondage"
+    "[34-41]": "cross-dressing"
+    "[42-49]": "role-playing"
+    "[50-57]": "spanking"
+    "[58-65]": "massaging"
+    "[66-73]": "masochism"
+    "[74-81]": "exhibitionism"
+    "[82-89]": "orgies"
+    "[90-97]": "voyeurism"
+    "[98-100]": "other"

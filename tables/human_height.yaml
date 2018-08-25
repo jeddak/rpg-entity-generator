@@ -1,4 +1,4 @@
-table:
+table:    # redo once ranges are working
   name: Human Height
   y-axis: SIZ
   entries: 

@@ -2,54 +2,53 @@ table:
   name: personality_enjoyments
   y-axis: number
   entries: 
-    "01-02": Acrobatics
-    "03-04": Acting
-    "05-06": Astrology
-    "07-08": Music appreciation
-    "09-10": Theatre
-    "11-12": Gaming (e.g. chess)
-    "13-14": Boating/Sailing
-    "15-16": Brewing
-    "17-18": Calligraphy
-    "19-20": Cards
-    "21-22": Carving
-    "23-24": Combat competition
-    "25-26": Cooking
-    "27-28": Dancing
-    "29-30": Dicing
-    "31-32": Animal fighting
-    "33-34": Eating
-    "35-36": Drinking
-    "37-38": Embroidery
-    "39-40": Falconry
-    "41-42": Fishing
-    "43-44": Fortune-telling
-    "45-46": Singing
-    "47-48": Gambling
-    "49-50": Gardening
-    "51-52": Glassmaking
-    "53-54": Animal racing
-    "55-56": Horse riding
-    "57-58": Hunting
-    "59-60": Invention
-    "61-62": Jewelry making
-    "63-64": Jousting
-    "65-66": Juggling
-    "67-68": Metalwork
-    "69-70": Painting
-    "71-72": Philosophizing
-    "73-74": Reading
-    "75-76": Research
-    "77-78": Riddles
-    "79-80": Sewing
-    "81-82": Sports (Wrestling, racing, etc)
-    "83-84": Storytelling
-    "85-86": Swimming
-    "87-88": Art appreciation
-    "89-90": Weaving
-    "91-92": Woodworking
-    "93-94": Writing
-    "95-96": Playing an instrument
-    "97-98": Pipe smoking
-    "99-100": Bird watching
-    
+    "[01-02]": "Acrobatics"
+    "[03-04]": "Acting"
+    "[05-06]": "Astrology"
+    "[07-08]": "Music appreciation"
+    "[09-10]": "Theatre"
+    "[11-12]": "Gaming (e.g. chess)"
+    "[13-14]": "Boating/Sailing"
+    "[15-16]": "Brewing"
+    "[17-18]": "Calligraphy"
+    "[19-20]": "Cards"
+    "[21-22]": "Carving"
+    "[23-24]": "Combat competition"
+    "[25-26]": "Cooking"
+    "[27-28]": "Dancing"
+    "[29-30]": "Dicing"
+    "[31-32]": "Animal fighting"
+    "[33-34]": "Eating"
+    "[35-36]": "Drinking"
+    "[37-38]": "Embroidery"
+    "[39-40]": "Falconry"
+    "[41-42]": "Fishing"
+    "[43-44]": "Fortune-telling"
+    "[45-46]": "Singing"
+    "[47-48]": "Gambling"
+    "[49-50]": "Gardening"
+    "[51-52]": "Glassmaking"
+    "[53-54]": "Animal racing"
+    "[55-56]": "Horse riding"
+    "[57-58]": "Hunting"
+    "[59-60]": "Invention"
+    "[61-62]": "Jewelry making"
+    "[63-64]": "Jousting"
+    "[65-66]": "Juggling"
+    "[67-68]": "Metalwork"
+    "[69-70]": "Painting"
+    "[71-72]": "Philosophizing"
+    "[73-74]": "Reading"
+    "[75-76]": "Research"
+    "[77-78]": "Riddles"
+    "[79-80]": "Sewing"
+    "[81-82]": "Sports (Wrestling, racing, etc)"
+    "[83-84]": "Storytelling"
+    "[85-86]": "Swimming"
+    "[87-88]": "Art appreciation"
+    "[89-90]": "Weaving"
+    "[91-92]": "Woodworking"
+    "[93-94]": "Writing"
+    "[95-96]": "Playing an instrument"
+    "[97-98]": "Pipe smoking"
+    "[99-100]": "Bird watching"
