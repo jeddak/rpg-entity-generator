@@ -469,7 +469,7 @@
                         36:    
                           Male: 108
                           Female: 103
-            -   two-dimensional table lookups are denoted thusly: **`[` *thetable* `|` *lookup key Y* `|` *lookup key X* `]`**
+            -   two-dimensional table lookups are denoted thusly: **`[` *table\_name* `|` *lookup key Y* `|` *lookup key X* `]`**
             -   So, for example, the template entry for looking up IQ from the IQbyAgeAndSex table might look like this:
                 
                     IQ: \% [IQbyAgeAndSex|2D10+14|Male]  \%
