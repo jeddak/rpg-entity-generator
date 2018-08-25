@@ -1,14 +1,10 @@
 template:
   template_name: Rookie Man-At-Arms
-  Description: A rookie man-at-arms
+  Description: A young, green medieval soldier armed similarly to a knight
   # lithe 1, medium 2, heavy 3
   buildnum: \% 1D3 \%
   build: \%  [Build| {template/buildnum}] \%
-  # height formula doesn't work for SIZ < 8
-  #height: \% 110 + ( {template/stats/SIZ} * 5 ) + 1D5 \% cm
   height: \% [Human Height|{template/stats/SIZ}] \%
-  # weight formula doesn't work for SIZ < 8 - replace with table lookup
-  #weight: \% ( {template/stats/SIZ} * (5 + ({template/buildnum} * 2)) )   \% kg
   weight: \% [Human Weight|{template/build}|{template/stats/SIZ}] \%
   sex:  \% [Sex|1d2] \%
   name: \% [Names|{template/sex}|1d4391] \%
@@ -22,8 +18,6 @@ template:
     INT: \% 3d6 \%
   attributes   : &id001
       action_points      : \% ((( {template/stats/INT} + {template/stats/DEX} ) -1 ) / 12 ) + 1  \%
-   # kind of a hack   
- #     damage_modifier    : \% ((( {template/stats/STR} + {template/stats/SIZ} ) -1 ) / 5 ) - 4   \%
       damage_modifier: \% [ Damage Modifier | ( {template/stats/STR} + {template/stats/SIZ} ) ] \%
       experience_modifier: \%  (( {template/stats/CHA} -1 ) / 6 ) -1 \%
       healing_rate       : \%  (( {template/stats/CON} -1 ) / 6 ) +1 \%

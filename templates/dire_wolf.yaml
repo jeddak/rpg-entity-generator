@@ -1,19 +1,10 @@
 template:
   template_name: Dire Wolf
-  Description: "Oldest of the canine species and feared
-pack-hunters, wolves are native to temperate and sub-arctic climates, preferring forests, hills and moorland. A pack consists of
-between 12 and 30 wolves led by an alpha male – usually the strongest of the pack but often the oldest. The pack hierarchy is incredibly strong; most individual wolves are subservient to the alpha male and challengers to the position are set-upon by the others. Any male that beats the leader generally assumes the alpha position, and may drive out the loser (if death does not result) or the loser may assume a life of subservience to the new leader, thereby retaining a place in the community.\n\
-Wolves are most active at night but can be roused to activity
-during the day. Hunting expeditions are highly co-ordinated affairs.
-A pack chooses and stalks its prey carefully and attacks, when they happen, consist of successive waves of between three and six animals aiming to incapacitate the prey before tearing out the throat or cutting off air at the windpipe. The alpha male feeds first, followed by the remainder of the pack in an established order. The youngest members of a pack may have to make do with scraps.
-In combat wolves rely on their powerful bite rather than their
-claws. Once a bite takes hold the wolf locks its jaws, and continues to exert pressure through the canines and by vigorously shaking the head, deepening and lengthening the bites. Wolves therefore tend to choose the Grip and Choose Location Special Effects (always
-aiming for an exposed area). A Gripped victim sustains biting damage throughout the duration of the grip as the wolf worries at the
-wound.\n\
-If the alpha male is forced to flee then the pack follows suit,
-although braver individuals may attempt to gain status by remaining
-to fight.\n\
-"
+  Description: "Oldest of the canine species and feared pack-hunters, wolves are native to temperate and sub-arctic climates, preferring forests, hills and moorland. A pack consists of between 12 and 30 wolves led by an alpha male – usually the strongest of the pack but often the oldest. The pack hierarchy is incredibly strong; most individual wolves are subservient to the alpha male and challengers to the position are set-upon by the others. Any male that beats the leader generally assumes the alpha position, and may drive out the loser (if death does not result) or the loser may assume a life of subservience to the new leader, thereby retaining a place in the community.\n\
+Wolves are most active at night but can be roused to activity during the day. Hunting expeditions are highly co-ordinated affairs. \n\
+A pack chooses and stalks its prey carefully and attacks, when they happen, consist of successive waves of between three and six animals aiming to incapacitate the prey before tearing out the throat or cutting off air at the windpipe. The alpha male feeds first, followed by the remainder of the pack in an established order. The youngest members of a pack may have to make do with scraps.\n\
+In combat wolves rely on their powerful bite rather than their claws. Once a bite takes hold the wolf locks its jaws, and continues to exert pressure through the canines and by vigorously shaking the head, deepening and lengthening the bites. Wolves therefore tend to choose the Grip and Choose Location Special Effects (always aiming for an exposed area). A Gripped victim sustains biting damage throughout the duration of the grip as the wolf worries at the wound.\n\
+If the alpha male is forced to flee then the pack follows suit, although braver individuals may attempt to gain status by remaining to fight."
   height: n/a
   weight: n/a
   sex:  \% [Sex|1d2] \%

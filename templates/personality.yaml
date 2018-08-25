@@ -1,3 +1,4 @@
+# based on Ash's Guide to RPG Personality - http://www.ashami.com/rpg/
 template:
   template_name: human_personality
   Primary_Motivator: \% [personality_motivator|1D100] \%
@@ -11,7 +12,7 @@ template:
   Core_Affinity: \% 1D100 \%
   Core_Comportment: \% 1D100 \%
   Core_Interactivity: \% 1D100 \%
-  Core_Sense of Humor: \% [ personality_sense_of_humor|1D100] \%
+  Core_Sense_of_Humor: \% [personality_sense_of_humor|1D100] \%
   Core_Disclosure: \% 1D100 \%
   Core_Conformity: \% 1D100 \%
   Sex_Orientation: \% [personality_sex_orientation|1D100] \%

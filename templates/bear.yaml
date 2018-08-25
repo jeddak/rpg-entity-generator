@@ -1,16 +1,16 @@
 template:
-  template_name: short-faced bear
-  Description: "The short-faced bear is a prehistoric ursoid that is much larger than modern bears, with proportionally longer limbs. Bears typically inhabit forested and hilly regions in temperate to arctic zones. They are generally solitary animals although mothers and cubs travel together in packs. The following characteristics represent Grizzly, Kodiak and Polar bears. These are the largest, fiercest, and most unpredictable of the bear species although their need to attack is generally driven by hunger, curiosity and fear. \n\
+  template_name: bear
+  Description: "Bears typically inhabit forested and hilly regions in temperate to arctic zones. They are generally solitary animals although mothers and cubs travel together in packs. The following characteristics represent Grizzly, Kodiak and Polar bears. These are the largest, fiercest, and most unpredictable of the bear species although their need to attack is generally driven by hunger, curiosity and fear. \n\
   Bears will roam far and wide in search of food, even entering settlements to scavenge, and prey on smaller creatures. They will pursue and track injured creatures, or those that flee, and leave a discernible trail. \n\
 Like many predators, playing dead does confuse the bear, and cause it to lose interest which may prove to be a life-saver if attacked.Despite their size and bulk they are swift and remarkable swimmers and climbers. Bears typically attempt to grip with both claws, and then deliver a bite, although swiping with a claw is also an effective means of disabling an enemy. \n\
 Playing dead is a tactic oft-cited for dealing with bear attacks. This is fine if the bear is acting defensively. If hungry, and actively chasing prey, playing dead may well be quite the wrong way to act. A hungry bear does not care if its meal is moving or static..."
-  height: 1.6m tall at the shoulder (on all fours)
+  height: \%{template/stats/SIZ} * 6 \%
   weight: \%{template/stats/SIZ} * 7 \%
   sex:  \% [Sex|1d2] \%
   stats:
-    STR: \%2d6+24 \%
+    STR: \%2d6+18 \%
     CON: \%2d6+6 \%
-    SIZ: \%4d6+30 \%
+    SIZ: \%4d6+20 \%
     DEX: \%2d6+6 \%
     INS: \%2d6+6 \%
     POW: \%2D6 \%
@@ -26,31 +26,31 @@ Playing dead is a tactic oft-cited for dealing with bear attacks. This is fine i
   hit_locations: 
     - ap   : 3
       range: 01-03 
-      hp   : 11
+      hp   : 10
       name : Right rear leg
     - ap   : 3 
       range: 04-06 
-      hp   : 11
+      hp   : 10
       name : Left rear leg
     - ap: 3 
       range: 07-09 
-      hp: 12
+      hp: 11
       name: Hindquarters
     - ap: 3 
       range: 10-12 
-      hp: 13
+      hp: 12
       name: Forequarters
     - ap: 3 
       range: 13-15 
-      hp: 11
+      hp: 10
       name: Right front leg
     - ap: 3 
       range: 16-18 
-      hp: 11
+      hp: 10
       name: Left front leg
     - ap: 3 
       range: 19-20 
-      hp: 11
+      hp: 10
       name: Head
   skills:
     Athletics:  \% ( {template/stats/STR} + {template/stats/DEX}) * 2 \% 
@@ -71,13 +71,18 @@ Playing dead is a tactic oft-cited for dealing with bear attacks. This is fine i
         - name: Bite
           size/force: L
           reach: S 
-          damage: \% 1d10 + 1D12 \%
+          damage: \% 1d8 + 1D12 \%
           ap: 3 (as for head)
-          hp: 11 (as for head)
+          hp: 10 (as for head)
         - name: Claw
           size/force: H
           reach: L
-          damage: \% 1d10 + 1D12 \%
+          damage: \% 1d8 + 1D12 \%
           ap: 3 (as for front leg)
-          hp: 11 (as for front leg)
+          hp: 10 (as for front leg)
+ 
+ 
+ 
+ 
+ 
  
