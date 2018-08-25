@@ -33,7 +33,7 @@
 -   However, namespaces and looping constructs are not supported.
 
 
-### Syntax
+## Template and Lookup Table Syntax
 
 -   Template syntax is yaml syntax (see <http://www.yaml.org> ), plus a few special escaped sequences
     -   Every template starts with the same structure - a root `template` node, and a child `template_name` node:
