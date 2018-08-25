@@ -472,7 +472,7 @@
             -   two-dimensional table lookups are denoted thusly: **`[` *thetable* `|` *lookup key Y* `|` *lookup key X* `]`**
             -   So, for example, the template entry for looking up IQ from the IQbyAgeAndSex table might look like this:
                 
-                    IQ: \% [IQbyAge|2D10+14|Male]  \%
+                    IQ: \% [IQbyAgeAndSex|2D10+14|Male]  \%
     
     4.  Value Ranges
     
@@ -601,13 +601,13 @@
                 name: \% [Names|{template/sex}|1d4391] \%
     -   A dice roll spec can be combined with an arithmetic expression and/or another value in the template
     -   Some combinations are not supported.
-    -   able lookups cannot be nested
-        -   as a workaround, you can capture an intermediate value in a template node, and then refer to that template node in another node definition&#x2026;
-            -   Here's a simple example of using an intermediate value for a table lookup:
-                
-                    submarine_color: \% [Colors|1D12] \%
-                    submarine_size: \%  [Size|{template/submarine_color}|1D6] \%
-            -
+        -   For instance, table lookups cannot be nested.
+            -   However, as a workaround, you can capture an intermediate value in a template node, and then refer to that template node in another node definition&#x2026;
+                -   Here's a simple example of using an intermediate value for a table lookup:
+                    
+                        submarine_color: \% [Colors|1D12] \%
+                        submarine_size: \%  [Size|{template/submarine_color}|1D6] \%
+        -   Dice roll specifications cannot be nested, either.
     -   Another interesting thing you can do is to use literal yaml in your lookup tables (see the Medieval Weapons lookup table definition for an example of this technique)
 
 
