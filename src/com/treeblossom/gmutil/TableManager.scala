@@ -32,8 +32,6 @@ object TableManager {
     tableFiles.map(f => {
       loadTableFile(mapsPath + "/" + f)
     })
-    // do
-
   }
 
   /**

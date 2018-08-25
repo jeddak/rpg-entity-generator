@@ -416,10 +416,11 @@ object EntityGenerator {
     // println (resolveNodeValue("\\% [Medieval Weapons|Broadsword]  \\% "))
     //println (resolveNodeValue("\\% [Medieval Weapons|Broadsword] , [Medieval Weapons|Chevron] ,  [Medieval Weapons|Longspear] \\% "))
     //println(containsArithmeticExpression("2 A + 3"))
-    traverse(rootNode, "template", 0, false, false)
-    
-    
-    
 
+    
+    //var keyStr = "0-9"
+   //println(keyStr + " " + new LookupTable("p").keyUsesRangeSyntax(keyStr))
+    
+   traverse(rootNode, "template", 0, false, false)
   }
 }
