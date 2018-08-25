@@ -3,7 +3,7 @@
 // Note: This implementation is not thread-safe!
 // https://gist.github.com/jesperdj/887771
 // by jesperdj
-package org.jesperj
+package org.jesperdj
 
 final class MersenneTwister (seed: Long = System.currentTimeMillis() ) {
   private val N = 624

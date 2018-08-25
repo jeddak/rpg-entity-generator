@@ -11,7 +11,7 @@ import scala.reflect.runtime.currentMirror
 import scala.tools.reflect.ToolBox
 import scala.util.matching.Regex
 
-import org.jesperj.MersenneTwister
+import org.jesperdj.MersenneTwister
 import org.yaml.snakeyaml.Yaml
 import scala.collection.convert.Wrappers
 import scala.util.{ Try, Success, Failure }
