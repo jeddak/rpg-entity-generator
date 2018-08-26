@@ -68,7 +68,7 @@ If the alpha male is forced to flee then the pack follows suit, although braver 
     - name: Bite
       size/force: M
       reach: S
-      damage: \% 1d4  \%
+      damage: 1d4  
       ap: 1 (as for head)
       hp: 4 (as for head)
  

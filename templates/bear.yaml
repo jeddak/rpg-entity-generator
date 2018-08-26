@@ -71,13 +71,13 @@ Playing dead is a tactic oft-cited for dealing with bear attacks. This is fine i
     - name: Bite
       size/force: L
       reach: S 
-      damage: \% 1d8 + 1D12 \%
+      damage: 1d8 + 1D12 
       ap: 3 (as for head)
       hp: 10 (as for head)
     - name: Claw
       size/force: H
       reach: L
-      damage: \% 1d8 + 1D12 \%
+      damage: 1d8 + 1D12 
       ap: 3 (as for front leg)
       hp: 10 (as for front leg)
  

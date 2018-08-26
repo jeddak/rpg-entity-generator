@@ -72,7 +72,7 @@ These animals have an excellent sense of smell, and are able to sniff out nutrit
     - name: Tusks
       size: M
       reach: S 
-      damage: \% 1d6 + 1D4 \%
+      damage:  1d6 + 1D4 
       ap: 2 (as for head)
       hp: 7 (as for head)
 
