@@ -303,6 +303,7 @@
             </tbody>
             </table>
             
+            -   Use square brackets in the key part of each value in the yaml file to indicate that a table uses ranges e.g. `"[0-49]"`
             -   The above table would be implemented in a .yaml file like this:
                 
                     table:
