@@ -229,11 +229,100 @@
                     35:  101
                     36:  101
         -   In a template, a one-dimensional table lookup is expressed thusly: **`[` *the\_table\_name* `|` *the lookup key* `]`**
-        -   So, for example, if we were creating a template that uses the IQbyAge table (using a random Age lookup value), our lookup would like this:
+        -   So, for example, if we were creating a template that uses the IQbyAge table, our lookup might look like this:
             
-                IQ: \% [IQbyAge|2D10+14]  \%
+                IQ: \% [IQbyAge|25]  \%
+        -   Of course, using a fixed value to reference a table is fine, but not very powerful. We'll see further on how you can combine random values and other values from the template to drive table lookups.
     
-    3.  Two-Dimensional Lookup Tables
+    3.  Value Ranges
+    
+        -   It can be convenient to use value ranges in tables - it's less work to create and maintain a table that uses value ranges than the equivalent table that relies on discrete values.
+            
+            <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+            
+            
+            <colgroup>
+            <col  class="org-left" />
+            
+            <col  class="org-right" />
+            </colgroup>
+            <thead>
+            <tr>
+            <th scope="col" class="org-left">Age Range</th>
+            <th scope="col" class="org-right">IQ</th>
+            </tr>
+            </thead>
+            
+            <tbody>
+            <tr>
+            <td class="org-left">16–17</td>
+            <td class="org-right">108</td>
+            </tr>
+            
+            
+            <tr>
+            <td class="org-left">18–19</td>
+            <td class="org-right">105</td>
+            </tr>
+            
+            
+            <tr>
+            <td class="org-left">20–24</td>
+            <td class="org-right">99</td>
+            </tr>
+            
+            
+            <tr>
+            <td class="org-left">25–34</td>
+            <td class="org-right">97</td>
+            </tr>
+            
+            
+            <tr>
+            <td class="org-left">35–44</td>
+            <td class="org-right">101</td>
+            </tr>
+            
+            
+            <tr>
+            <td class="org-left">45–54</td>
+            <td class="org-right">106</td>
+            </tr>
+            
+            
+            <tr>
+            <td class="org-left">55–64</td>
+            <td class="org-right">109</td>
+            </tr>
+            
+            
+            <tr>
+            <td class="org-left">65–69</td>
+            <td class="org-right">114</td>
+            </tr>
+            </tbody>
+            </table>
+            
+            -   The above table would be implemented in a .yaml file like this:
+                
+                    table:
+                      name: IQbyAge
+                      y-axis: number
+                      entries: 
+                        "[16-17"]:  108
+                        "[18-19"]:  105
+                        "[20-24]":   99
+                        "[25-34]":   97
+                        "[35-44]":  101
+                        "[45-54]":  106
+                        "[55-64]":  109
+                        "[65-69]":  114
+        -   Note that the template's lookup expression would not change from the prior example:
+            
+                IQ: \% [IQbyAge|25]  \%
+        -   You still pass a single numeric value to the table.
+    
+    4.  Two-Dimensional Lookup Tables
     
         -   A two-dimensional table is a table that is referenced by two values.
         -   e.g. You would use Age and Sex to look up the IQ value from this table:
@@ -472,95 +561,7 @@
             -   two-dimensional table lookups are denoted thusly: **`[` *table\_name* `|` *lookup key Y* `|` *lookup key X* `]`**
             -   So, for example, the template entry for looking up IQ from the IQbyAgeAndSex table might look like this:
                 
-                    IQ: \% [IQbyAgeAndSex|2D10+14|Male]  \%
-    
-    4.  Value Ranges
-    
-        -   It can be convenient to use value ranges in tables - it's less work to create and maintain a table that uses value ranges than the equivalent table that relies on discrete values.
-            
-            <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-            
-            
-            <colgroup>
-            <col  class="org-left" />
-            
-            <col  class="org-right" />
-            </colgroup>
-            <thead>
-            <tr>
-            <th scope="col" class="org-left">Age Range</th>
-            <th scope="col" class="org-right">IQ</th>
-            </tr>
-            </thead>
-            
-            <tbody>
-            <tr>
-            <td class="org-left">16–17</td>
-            <td class="org-right">108</td>
-            </tr>
-            
-            
-            <tr>
-            <td class="org-left">18–19</td>
-            <td class="org-right">105</td>
-            </tr>
-            
-            
-            <tr>
-            <td class="org-left">20–24</td>
-            <td class="org-right">99</td>
-            </tr>
-            
-            
-            <tr>
-            <td class="org-left">25–34</td>
-            <td class="org-right">97</td>
-            </tr>
-            
-            
-            <tr>
-            <td class="org-left">35–44</td>
-            <td class="org-right">101</td>
-            </tr>
-            
-            
-            <tr>
-            <td class="org-left">45–54</td>
-            <td class="org-right">106</td>
-            </tr>
-            
-            
-            <tr>
-            <td class="org-left">55–64</td>
-            <td class="org-right">109</td>
-            </tr>
-            
-            
-            <tr>
-            <td class="org-left">65–69</td>
-            <td class="org-right">114</td>
-            </tr>
-            </tbody>
-            </table>
-            
-            -   The above table would be implemented in a .yaml file like this:
-                
-                    table:
-                      name: IQbyAge
-                      y-axis: number
-                      entries: 
-                        "[16-17"]:  108
-                        "[18-19"]:  105
-                        "[20-24]":   99
-                        "[25-34]":   97
-                        "[35-44]":  101
-                        "[45-54]":  106
-                        "[55-64]":  109
-                        "[65-69]":  114
-        -   Note that the template's lookup expression would not change from the prior example:
-            
-                IQ: \% [IQbyAge|2D10+14]  \%
-        -   You still pass a single numeric value to the table.
+                    IQ: \% [IQbyAgeAndSex|25|Male]  \%
 
 3.  Template Reference Directive
 
@@ -582,17 +583,17 @@
 4.  Combining Different Directives Within A Single Value
 
     -   Directives may be combined in limited ways; for example:
-        -   references to other values within the template may be combined as part of an arithmetic expression.
+        -   References to other values within the template may be combined as part of an arithmetic expression.
             -   Here, we add the `STR` and `DEX` stats to derive the `Athletics` skill rank:
                 
                     Athletics: \%{template/stats/STR} + {template/stats/DEX} \%
             -   Here, we combine the `INT` and `DEX` stats, and perform some additional math to derive action points:
                 
                     action_points      : \% ((( {template/stats/INT} + {template/stats/DEX} ) -1 ) / 12 ) + 1  \%
-        -   a table lookup can use a dice roll specification, as in this example:
+        -   A table lookup can use a dice roll specification, as in this example:
             
                 hair_color: \% [Hair Color|1D100] \%
-        -   a table lookup can use another value in the template
+        -   A table lookup can use another value in the template
             -   Here, we use the `SIZ` stat to look up the height from the `Human Height` table:
                 
                     height: \% [Human Height|{template/stats/SIZ}] \%
@@ -632,7 +633,7 @@
 
 -   Mersenne Twister random number generation code is by jesperdj <https://gist.github.com/jesperdj/887771>
 -   The Entity Generator relies on Andrey Somov's SnakeYAML Java library to parse YAML files
--   Inspiration came from various roleplaying games, especially: Steve Jackson's The Fantasy Trip, N. Robin Crossby's HarnMaster, Iron Crown Enterprises RoleMaster, and The Design Mechanism's Mythras (formerly RuneQuest 6)
+-   Inspiration came from various roleplaying games, especially Steve Jackson's The Fantasy Trip, N. Robin Crossby's HarnMaster, Iron Crown Enterprises RoleMaster, and The Design Mechanism's Mythras (formerly RuneQuest 6)
 -   Additional inspiration and ideas came from Hannu Kokko's wonderful RuneQuest 6/Mythras Encounter Generator
 
 
