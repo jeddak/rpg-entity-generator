@@ -1,0 +1,93 @@
+template:
+  template_name: Lion
+  Description: "Savannah and plains-dwelling big cats, lions form prides of
+between 10 and 20 (around five females and cubs, and two or three
+males). Males excluded from a pride can, and do, become rogue
+wanderers, and so lions can also be encountered singly. The females
+perform most of the hunting with the males guarding the pride’s
+territory from other prides and interlopers.
+Hunting is a co-ordinated business with three or more lionesses
+stalking and chasing-down prey over a protracted period. Such
+teamwork increases the success of the hunt. Each lioness in a hunt-
+ing party has a preferred role, with a leader and stalkers who trian-
+gulate to reduce the chance of prey escaping.
+It is rare for lions to prey on humans but not unheard of. Settle-
+ments with livestock populations that are established too close to a
+pride’s territories increases the chance of attacks, and rogue males
+(particularly the sick or injured), driven by hunger, will look for what-
+ever prey is available."
+  height: n/a
+  weight: n/a
+  sex:  \% [Sex|1d2] \%
+  stats:
+    STR: \%2d6+12 \%
+    CON: \%3d6 \%
+    SIZ: \%2d6+15 \%
+    DEX: \%3d6+6 \%
+    INS: \%2d6+6 \%
+    POW: \%2D6 \%
+  attributes   : 
+      action_points      : 3
+      damage_modifier    : 1D8
+      healing_rate       : \%  (( {template/stats/CON} -1 ) / 6 ) +1 \%
+      initiative_bonus   : 15
+      movement           : 8
+      magic_points       : 7
+      armour: Mane and hide
+      abilities: Intimidate, Night Sight
+  hit_locations: 
+    - ap   : 1
+      range: 01-02
+      hp   : 7
+      name : Right hind leg
+    - ap   : 1 
+      range: 03-04 
+      hp   : 7
+      name : Left hind leg
+    - ap: 1
+      range: 05-07 
+      hp: 8
+      name: Hindquarters
+    - ap: 1 
+      range: 8-10
+      hp: 9
+      name: Forequarters
+    - ap: 1 
+      range: 11-13 
+      hp: 7
+      name: Right front leg
+    - ap: 1 
+      range: 14-16 
+      hp: 7
+      name: Left front leg
+    - ap: 3
+      range: 17-20 
+      hp: 7
+      name: Head
+  skills:
+    Athletics:  \% (( {template/stats/STR} + {template/stats/DEX} -3) * 2) \%   
+    Brawn:  \% ( {template/stats/STR} + {template/stats/SIZ} ) +20  \%     
+    Endurance: \% {template/stats/CON} * 5 \%     
+    Evade: \%( {template/stats/DEX} * 3 ) + 3  \%    
+    Perception: \% (((({template/stats/INS} + {template/stats/POW}) *2 ) *3 )  -10) \%    
+    Stealth: \% (( {template/stats/DEX} + {template/stats/INS} * 2) + 10) \%  
+    Track:  \% (( {template/stats/INS} + {template/stats/CON} ) * 2) + 4   \%   
+    Willpower: \% ( {template/stats/INS} * 3) + 5   \%   
+
+  combat_styles:
+    - name: King Slayer (bite, claws)
+      value: \% 68 + 1D12 \%
+  weapons:
+    - name: Bite
+      size/force: L
+      reach: S
+      damage: 1d8 + 1D8
+      ap: 3 (as for head)
+      hp: 7 (as for head)
+    - name: Claw
+      size/force: L
+      reach: M
+      damage: 1d6 + 1D8
+      ap: 2 (as for leg)
+      hp: 7 (as for leg)
+ 

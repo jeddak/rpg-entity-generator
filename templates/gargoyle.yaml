@@ -5,8 +5,8 @@ Gargoyles have large bat-like wings and are capable if rather ungainly flyers. T
 In combat, gargoyles attack in large numbers, rending flesh with their long hard talons. They will also either bite their opponents with sharp jagged teeth or use the long horns that spiral from their back of their head to rip deeply through their prey. If remaining completely motionless against a rocky background, a gargoyle’s Stealth skill roll is 2 grades easier. However, many will just position themselves among other gargoyle-like statues in an attempt to be mistaken for harmless stone. 
 They do not require sustenance, attacking and inflicting injury on victims just for the enjoyment and they can stand motionless indefinitely. \n\
 A lair of gargoyles may contain between 4 and 16 individuals."
-  height: 
-  weight: 
+  height: \% [Human Height|{template/stats/SIZ}] \%
+  weight: \% [Human Weight|Medium|{template/stats/SIZ}] \%
   sex:  \% [Sex|1d2] \%
   stats:
     STR: \%2d6+9 \%
@@ -77,23 +77,23 @@ A lair of gargoyles may contain between 4 and 16 individuals."
   combat_styles:
     - name: Death From Above
       value: \% 59 + 1D6 \%
-      weapons:
-        - name: Bite
-          size/force: M
-          reach: T
-          damage: \% 1d6 + 1D4 \%
-          ap: 8 (as for head)
-          hp: 6 (as for head)
-        - name: Claw
-          size/force: M
-          reach: M
-          damage: \% 1d4 + 1D4 \%
-          ap: 8 (as for arm)
-          hp: 5 (as for arm)
-        - name: Horn
-          size/force: M
-          reach: S
-          damage: \% 1d6 + 1D4 \%
-          ap: 8 (as for head)
-          hp: 6 (as for head)
+  weapons:
+    - name: Bite
+      size/force: M
+      reach: T
+      damage: 1d6 + 1D4 
+      ap: 8 (as for head)
+      hp: 6 (as for head)
+    - name: Claw
+      size/force: M
+      reach: M
+      damage:  1d4 + 1D4 
+      ap: 8 (as for arm)
+      hp: 5 (as for arm)
+    - name: Horn
+      size/force: M
+      reach: S
+      damage:  1d6 + 1D4 
+      ap: 8 (as for head)
+      hp: 6 (as for head)
  

@@ -67,18 +67,18 @@ Playing dead is a tactic oft-cited for dealing with bear attacks. This is fine i
   combat_styles:
     - name: Ursine Fury 
       value: \% 70 + 1D8 \%
-      weapons:
-        - name: Bite
-          size/force: L
-          reach: S 
-          damage: \% 1d10 + 1D12 \%
-          ap: 3 (as for head)
-          hp: 11 (as for head)
-        - name: Claw
-          size/force: H
-          reach: L
-          damage: \% 1d10 + 1D12 \%
-          ap: 3 (as for front leg)
-          hp: 11 (as for front leg)
+  weapons:
+    - name: Bite
+      size/force: L
+      reach: S 
+      damage: 1d10 + 1D12 
+      ap: 3 (as for head)
+      hp: 11 (as for head)
+    - name: Claw
+      size/force: H
+      reach: L
+      damage:  1d10 + 1D12 
+      ap: 3 (as for front leg)
+      hp: 11 (as for front leg)
  
  

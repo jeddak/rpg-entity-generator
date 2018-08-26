@@ -1,0 +1,83 @@
+template:
+  template_name: Boar
+  Description: "Wild boars inhabit woods and forests in most temperate climates.\n\
+The body of the wild boar is compact; the head is large, whilst the legs relatively short. A boar’s coat consists of stiff bristles and finer fur. The colour varies from dark grey to black or brown, and there can be great regional differences in colour. Adult boars measure around 2m in length, and stand around 1m at the shoulder. Larger specimens are not uncommon. Adult males are equipped with large, sharp tusks used for foraging and fighting, and these tusks lend the boar its fearsome reputation.\n\
+All boars are aggressive when threatened, usually attempting to intimidate first, and then launch a powerful charge using the tusks to carve at their enemies. Sows with young will almost certainly attempt to defend their progeny from potential attack, and males can be highly territorial – especially if sows are nearby during the breeding season.\n\
+Large, powerful specimens can easily eviscerate unwary opponents, and whilst much of the challenge comes in facing these creatures with a long spear to receive a charge, hunter injuries and deaths are not uncommon.\n\
+Wild boar live in groups called sounders, consisting of females and their young. The males live alone, but join sounders in the mating season, when they compete for access to females.\n\
+Male wild boar can be very aggressive. They have been known to chase other scavengers away from carrion. Wild boars sometimes construct shelters from cut grass, and female wild boars are the only hoofed animals that give birth and look after their young inside a crude nest. \n\
+These animals have an excellent sense of smell, and are able to sniff out nutritious tubers and roots underground, while they snuffle through the leaf litter. Foraging wild boars often leave telltale signs, frequently ploughing up large patches of soil."
+  height: 
+  weight: 
+  sex:  \% [Sex|1d2] \%
+  stats:
+    STR: \%2d6+9\%     16
+    CON: \%2d6+9\%    16
+    SIZ: \%3d6+6\%    17
+    DEX: \%3d6\%      11
+    INS: \%2d6+4\%      11
+    POW: \%2d6\%       7
+  attributes   : 
+      action_points      : 2
+      damage_modifier    : +1d4
+      healing_rate       : \%  (( {template/stats/CON} -1 ) / 6 ) +1 \%
+      initiative_bonus   : 11
+      movement           : 8
+      magic_points       : 0
+      armour: Bristled Hide
+      abilities: Burrower, Frenzy
+  hit_locations: 
+    - ap   : 2
+      range: 01-03 
+      hp   : 7
+      name : Right rear leg
+    - ap   : 2 
+      range: 04-06 
+      hp   : 7
+      name : Left rear leg
+    - ap: 2 
+      range: 07-09 
+      hp: 8
+      name: Hindquarters
+    - ap: 2 
+      range: 10-12 
+      hp: 9
+      name: Forequarters
+    - ap: 2 
+      range: 13-15 
+      hp: 7
+      name: Right front leg
+    - ap: 2 
+      range: 16-18 
+      hp: 7
+      name: Left front leg
+    - ap: 2 
+      range: 19-20 
+      hp: 7
+      name: Head
+  skills:
+    Athletics:  \% ( {template/stats/STR} + {template/stats/DEX}) * 2 \%
+    Brawn:  \% ( {template/stats/STR} + {template/stats/SIZ} ) * 2 \%   
+    Endurance: \% {template/stats/CON} * 4 \% 
+    Evade: \%{template/stats/DEX} * 4 \%
+    Perception: \% (( {template/stats/INS} + {template/stats/POW}) * 2 ) + 9 \%
+    Survival: \% ({template/stats/STR} + {template/stats/DEX})  * 3 \%
+    Swim: \% ( {template/stats/STR} + {template/stats/CON})  * 2 \% 
+    Willpower: \% {template/stats/INS} * 3   \%     32     11
+
+  combat_styles:
+    - name: Goring Grunter 
+      value: \% 60 + 1D12 \%
+  weapons:
+    - name: Tusks
+      size: M
+      reach: S 
+      damage: \% 1d6 + 1D4 \%
+      ap: 2 (as for head)
+      hp: 7 (as for head)
+
+ 
+ 
+ 
+ 
+ 

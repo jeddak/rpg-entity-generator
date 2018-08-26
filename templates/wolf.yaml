@@ -81,22 +81,22 @@ to fight.\n\
       hp: 4
       name: Head
   skills:
-    Athletics:  \% (( {template/stats/STR} + {template/stats/DEX} -3) * 2) \%   59
-    Brawn:  \% ( {template/stats/STR} + {template/stats/SIZ} ) +20  \%   36
-    Endurance: \% {template/stats/CON} * 5 \%   62
-    Evade: \%( {template/stats/DEX} * 3 ) + 10  \%  52
-    Perception: \% ((({template/stats/INS} + {template/stats/POW}) *2 ) *3) \%    60
-    Track:  \% (( {template/stats/INS} + {template/stats/CON} ) * 2) + 4\%   64
-    Willpower: \% ( {template/stats/INS} * 4)   \%   44
+    Athletics:  \% (( {template/stats/STR} + {template/stats/DEX} -3) * 2) \%   
+    Brawn:  \% ( {template/stats/STR} + {template/stats/SIZ} ) +20  \%   
+    Endurance: \% {template/stats/CON} * 5 \%   
+    Evade: \%( {template/stats/DEX} * 3 ) + 10  \%  
+    Perception: \% ((({template/stats/INS} + {template/stats/POW}) *2 ) *3) \%    
+    Track:  \% (( {template/stats/INS} + {template/stats/CON} ) * 2) + 4\%   
+    Willpower: \% ( {template/stats/INS} * 4)   \%   
 
   combat_styles:
     - name: Pack Savage (Bite)
       value: \% 55 + 1D8 \%
-      weapons:
-        - name: Bite
-          size/force: S
-          reach: T
-          damage: \% 1d4 - 1D2 \%
-          ap: 1 (as for head)
-          hp: 4 (as for head)
+  weapons:
+    - name: Bite
+      size/force: S
+      reach: T
+      damage: 1d4 - 1D2
+      ap: 1 (as for head)
+      hp: 4 (as for head)
  

@@ -1,17 +1,7 @@
 template:
   template_name: Tiger
-  Description: "With the exception of smilodon, tigers are the largest of the big
-cats. Highly territorial and generally solitary (save for females with
-cubs) they frequent many different climates including arctic envi-
-ronments. Their natural camouflage, usually with the characteris-
-tic black stripes, means they can move with high stealth, increasing
-their ambush capabilities. The pattern of stripes is unique to each
-tiger, and helps the animals to conceal themselves amongst the shadows, foliage and long grass as they stalk their prey.\n\
-The chief means of attack is the powerful bite, followed by claw
-rakes. A hungry tiger is tenacious and will stalk prey for a great distance if driven by an empty stomach. They are undeterred by prey
-larger themselves although these cats are still cautious given that -
-generally - they do not hunt in large numbers, and have little in the
-way of support.
+  Description: "Of the big cats, the tiger is second only in size to the smilodon. Highly territorial and generally solitary (save for females with cubs) they frequent many different climates including arctic environments. Their natural camouflage, usually with the characteristic black stripes, means they can move with high stealth, increasing their ambush capabilities. The pattern of stripes is unique to each tiger, and helps the animals to conceal themselves amongst the shadows, foliage and long grass as they stalk their prey.\n\
+The chief means of attack is the powerful bite, followed by claw rakes. A hungry tiger is tenacious and will stalk prey for a great distance if driven by an empty stomach. They are undeterred by prey larger themselves although these cats are still cautious given that - generally - they do not hunt in large numbers, and have little in the way of support.
 "
   height: n/a
   weight: n/a
@@ -74,17 +64,17 @@ way of support.
   combat_styles:
     - name: Striped Death (teeth, claws)
       value: \% 78 + 1D8 \%
-      weapons:
-        - name: Bite
-          size/force: L
-          reach: S
-          damage: \% 1d8 + 1D10 \%
-          ap: 2 (as for head)
-          hp: 8 (as for head)
-        - name: Claw
-          size/force: L
-          reach: M
-          damage: \% 1d6 + 1D12 \%
-          ap: 2 (as for leg)
-          hp: 8 (as for leg)
+  weapons:
+    - name: Bite
+      size/force: L
+      reach: S
+      damage: 1d8 + 1D10
+      ap: 2 (as for head)
+      hp: 8 (as for head)
+    - name: Claw
+      size/force: L
+      reach: M
+      damage: 1d6 + 1D12
+      ap: 2 (as for leg)
+      hp: 8 (as for leg)
  

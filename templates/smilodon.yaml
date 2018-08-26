@@ -89,17 +89,17 @@ prey.
   combat_styles:
     - name: Smilodon Ambush (teeth, claws)
       value: \% 72 + 1D8 \%
-      weapons:
-        - name: Bite
-          size/force: H
-          reach: M
-          damage: \% 1d10 + 1D12 \%
-          ap: 2 (as for head)
-          hp: 9 (as for head)
-        - name: Claw
-          size/force: L
-          reach: M
-          damage: \% 1d8 + 1D12 \%
-          ap: 2 (as for leg)
-          hp: 9 (as for leg)
+  weapons:
+    - name: Bite
+      size/force: H
+      reach: M
+      damage: 1d10 + 1D12
+      ap: 2 (as for head)
+      hp: 9 (as for head)
+    - name: Claw
+      size/force: L
+      reach: M
+      damage: 1d8 + 1D12
+      ap: 2 (as for leg)
+      hp: 9 (as for leg)
  

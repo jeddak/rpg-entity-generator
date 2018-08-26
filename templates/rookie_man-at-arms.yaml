@@ -55,10 +55,6 @@ template:
       range: 19-20 
       hp: \% ( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5   \%
       name: Head
-  combat_styles:
-    - name: Man-at-Arms 
-      value: \% 2d20+45 \%
-      weapons: \{  \% [Medieval Weapons|Broadsword], [Medieval Weapons|Chevron], [Medieval Weapons|Longspear] \%    \}
   standard_skills:
     Athletics: \%{template/stats/STR} + {template/stats/DEX} \% 
     Boating: \%{template/stats/STR} + {template/stats/CON} \%
@@ -119,4 +115,9 @@ template:
     Track: \%{template/stats/INT} + {template/stats/CON}\%
     Trance: \%{template/stats/POW} + {template/stats/CON}\%
   other_languages: none
+  combat_styles:
+    - name: Man-at-Arms 
+      value: \% 2d20+45 \%
+  weapons: \{  \% [Medieval Weapons|Broadsword], [Medieval Weapons|Chevron], [Medieval Weapons|Longspear] \%    \}
+  
   notes: Quilted Leather
