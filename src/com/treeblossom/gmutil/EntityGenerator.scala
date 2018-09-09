@@ -35,7 +35,7 @@ object EntityGenerator {
   val ALPHA_PATTERN: Regex = """\p{Alpha}""".r
   val ARITHMETIC_EXPR_PATTERN: Regex = """[+|-|/|+|^|*]""".r
   
-  val toolbox = currentMirror.mkToolBox() // This is actually spinning up a runtime(!), ideal.
+  val toolbox = currentMirror.mkToolBox() // This is actually spinning up a runtime(!). Probably not ideal.
 
   val INDICATOR_KEY_VAL_SEPARATOR = ": "
   val INDICATOR_SEQUENCE_ENTRY = "- "
@@ -134,7 +134,7 @@ object EntityGenerator {
   }
   
   /**
-   * Returns true if it looks as though valueStr could be evaluated as an arithmetic expression.
+   * Returns true if it looks as though <tt>valueStr</tt> could be evaluated as an arithmetic expression.
    */
   def containsArithmeticExpression(valueStr :String):Boolean = {
      if (valueStr.trim().length > 0) {
@@ -168,7 +168,7 @@ object EntityGenerator {
   }
 
   /**
-   * Iterate over an ArrayList of nodes.
+   * Iterate over an <tt>ArrayList</tt> of nodes.
    */
   def traverseList(nodeAsList: ArrayList[LinkedHashMap[String, Object]], level: Int): Unit = {
     for (thisListNode <- (nodeAsList.asScala)) {
@@ -220,7 +220,7 @@ object EntityGenerator {
 
   /**
    * Find a node given an address, and resolve its value.
-   * The node must be resolvable to a String value.
+   * The node must be resolvable to a <tt>String</tt> value.
    */
   def findAndResolve(startNode: LinkedHashMap[String, Object], addr: String): String = {
     var addrStr = addr.replace(TOKEN_STARTREF, "").replace(TOKEN_ENDREF, "")
