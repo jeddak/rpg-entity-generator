@@ -21,7 +21,7 @@ import scala.util.{ Try, Success, Failure }
  */
 object EntityGenerator {
   val INDENT: Integer = 2
-  val FILL: String = "                                                                                                                 "
+  val FILL: String = "                                                                                                                  "
   val TOKEN_EVAL: String = "\\%"
   val TOKEN_STARTREF: String = "{"
   val TOKEN_ENDREF: String = "}"
@@ -49,7 +49,7 @@ object EntityGenerator {
    * Walk a parsed yaml-document tree.
    *
    */
-  def traverse(node: Object, name: String, level: Int, isInArrayList: Boolean, isFirstInArrayList: Boolean): Unit = {
+  def traverse(node: Object, name: String, parent: Object, level: Int, isInArrayList: Boolean, isFirstInArrayList: Boolean): Unit = {
     var output =
       if (isInArrayList) {
         name + INDICATOR_KEY_VAL_SEPARATOR
@@ -62,13 +62,20 @@ object EntityGenerator {
       var nodeAsMap = node.asInstanceOf[LinkedHashMap[String, Object]]
       var newLevel = level + 1
       var keys = nodeAsMap.keySet().asScala
-      keys.map(key => traverse(nodeAsMap.get(key), key, newLevel, false, false))
+      keys.map(key => traverse(nodeAsMap.get(key), key, nodeAsMap, newLevel, false, false))
     } else if (node.isInstanceOf[ArrayList[LinkedHashMap[String, Object]]]) {
       println()
       var newLevel = level + 1
       var nodeAsList = node.asInstanceOf[ArrayList[LinkedHashMap[String, Object]]]
       traverseList(nodeAsList, newLevel)
-    } else printNodeValue(node)
+    } else {
+      if(parent.isInstanceOf[LinkedHashMap[String, Object]]) {
+        var pMap = parent.asInstanceOf[LinkedHashMap[String, Object]]
+        pMap.put(name,node)
+      }
+          
+      printNodeValue(node)
+    }
   }
 
   /**
@@ -123,7 +130,7 @@ object EntityGenerator {
     } else if (node.isInstanceOf[LinkedHashMap[String, Object]]) {
       var nodeAsMap = node.asInstanceOf[LinkedHashMap[String, Object]]
       var keys = nodeAsMap.keySet().asScala
-      keys.map(key => traverse(nodeAsMap.get(key), key, level, false, false))
+      keys.map(key => traverse(nodeAsMap.get(key), key, nodeAsMap, level, false, false))
     } else if (node.isInstanceOf[ArrayList[LinkedHashMap[String, Object]]]) {
       println(" ")
       var newLevel = level + 1
@@ -421,6 +428,6 @@ object EntityGenerator {
     //var keyStr = "0-9"
    //println(keyStr + " " + new LookupTable("p").keyUsesRangeSyntax(keyStr))
     
-   traverse(rootNode, "template", 0, false, false)
+   traverse(rootNode, "template", null, 0, false, false)
   }
 }
