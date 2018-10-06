@@ -17,7 +17,7 @@ import scala.collection.convert.Wrappers
 import scala.util.{ Try, Success, Failure }
 
 /**
- * TODO either update the tree with resolved node values OR generate a new tree of fully-resolved nodes.
+ * 
  */
 object EntityGenerator {
   val INDENT: Integer = 2
@@ -35,8 +35,8 @@ object EntityGenerator {
   val ALPHA_PATTERN: Regex = """\p{Alpha}""".r
   val ARITHMETIC_EXPR_PATTERN: Regex = """[+|-|/|+|^|*]""".r
   
-  val toolbox = currentMirror.mkToolBox() // This is actually spinning up a runtime(!). Probably not ideal.
-
+  val toolbox = currentMirror.mkToolBox() 
+  
   val INDICATOR_KEY_VAL_SEPARATOR = ": "
   val INDICATOR_SEQUENCE_ENTRY = "- "
 
@@ -44,7 +44,7 @@ object EntityGenerator {
 
   val tableManager = TableManager
   tableManager.loadMaps("/home/jdonald/devwork/scala/rpg-entity-generator/tables") //TODO get tables path from args(1)
-  
+
   /**
    * Walk a parsed yaml-document tree.
    *
@@ -57,47 +57,32 @@ object EntityGenerator {
         FILL.substring(0, level * INDENT) + name + INDICATOR_KEY_VAL_SEPARATOR
       }
     print(output)
-    if (node.isInstanceOf[LinkedHashMap[String, Object]]) {
-      println()
-      var nodeAsMap = node.asInstanceOf[LinkedHashMap[String, Object]]
-      var newLevel = level + 1
-      var keys = nodeAsMap.keySet().asScala
-      keys.map(key => traverse(nodeAsMap.get(key), key, nodeAsMap, newLevel, false, false))
-    } else if (node.isInstanceOf[ArrayList[LinkedHashMap[String, Object]]]) {
-      println()
-      var newLevel = level + 1
-      var nodeAsList = node.asInstanceOf[ArrayList[LinkedHashMap[String, Object]]]
-      traverseList(nodeAsList, newLevel)
-    } else {
-      if(parent.isInstanceOf[LinkedHashMap[String, Object]]) {
-        var pMap = parent.asInstanceOf[LinkedHashMap[String, Object]]
-        pMap.put(name,node)
+    node match {
+      case nodeAsMap: LinkedHashMap[String, Object] => {
+        var keys = nodeAsMap.keySet().asScala
+        keys.map(key => traverse(nodeAsMap.get(key), key, nodeAsMap, level + 1, false, false))
       }
-          
-      printNodeValue(node)
+      case nodeAsList: ArrayList[LinkedHashMap[String, Object]] => traverseList(nodeAsList, level + 1)
+      case nodeStr: String => {
+        var resolved = extractNodeValueAsString(nodeStr)
+        parent match {
+          case pMap: LinkedHashMap[String, Object] => pMap.put(name, resolved)
+        }
+        println(resolved)
+      }
+      case _ => Unit
     }
   }
 
   /**
    *
    */
-  def printNodeValue(node: Object) = {
-    if (node.isInstanceOf[String]) {
-      var nodeAsString = node.asInstanceOf[String]
-      var fullyMaterializedValue = resolveNodeValue(nodeAsString)
-      println(fullyMaterializedValue)
-    } else if (node.isInstanceOf[Integer]) {
-      var nodeAsInt = node.asInstanceOf[Integer]
-      println(nodeAsInt)
-    } else if (node.isInstanceOf[Double]) {
-      var nodeAsDouble = node.asInstanceOf[Double]
-      println(nodeAsDouble)
-    } else if (node.isInstanceOf[Boolean]) {
-      var nodeAsBool = node.asInstanceOf[Boolean]
-      println(nodeAsBool)
-    } else if (node.isInstanceOf[Date]) {
-      var nodeAsDate = node.asInstanceOf[Date]
-      println(nodeAsDate)
+  def extractNodeValueAsString(node: Object): String = {
+    node match {
+      case str: String   => resolveNodeValue(str)
+      case intg: Integer => intg.toString
+      case date: Date    => date.toString
+      case _             => ""
     }
   }
 
@@ -107,57 +92,60 @@ object EntityGenerator {
    *
    */
   def traverseAnonymous(node: Object, level: Int): Unit = {
+    node match {
+      case nodeAsMap: LinkedHashMap[String, String] => {
+        var keys = nodeAsMap.keySet().asScala
+        var i: Int = 0
+        keys.map(key => {
+          var v: Object = nodeAsMap.get(key)
+          var resVal: String =
+            if (v.isInstanceOf[String]) {
+              resolveNodeValue(v.asInstanceOf[String])
+            } else {
+              v.toString()
+            }
+          outputStringMapEntry(key, resVal, level, (i == 0))
+          i = i + 1
+        })
+      }
+      case nodeAsMap: LinkedHashMap[String, Object] => {
+        var keys = nodeAsMap.keySet().asScala
+        keys.map(key => traverse(nodeAsMap.get(key), key, nodeAsMap, level, false, false))
+      }
+      case nodeAsList: ArrayList[LinkedHashMap[String, Object]] => {
+        println(" ")
+        var newLevel = level + 1
+        var nodeAsList = node.asInstanceOf[ArrayList[LinkedHashMap[String, Object]]]
+        println(" ")
+        traverseList(nodeAsList, newLevel)
+      }
+      case nodeStr: String => {
+        print(nodeStr)
+        //TODO store back in tree
+      }
+      case _ => Unit
+    }
 
-    if (node.isInstanceOf[LinkedHashMap[String, String]]) {
-      var nodeAsMap = node.asInstanceOf[LinkedHashMap[String, String]]
-      var keys = nodeAsMap.keySet().asScala
-      var i: Int = 0
-      //var newMap :LinkedHashMap[String,String] = new LinkedHashMap[String,String]
-      keys.map(key => {
-        var v: Object = nodeAsMap.get(key)
-        var resVal: String =
-          if (v.isInstanceOf[String]) {
-            resolveNodeValue(v.asInstanceOf[String])
-          } else {
-            v.toString()
-          }
-        outputStringMapEntry(key, resVal, level, (i == 0))
-        //newMap.put(key,resVal)
-        //nodeAsMap.put(key,resVal)
-        i = i + 1
-      })
-
-    } else if (node.isInstanceOf[LinkedHashMap[String, Object]]) {
-      var nodeAsMap = node.asInstanceOf[LinkedHashMap[String, Object]]
-      var keys = nodeAsMap.keySet().asScala
-      keys.map(key => traverse(nodeAsMap.get(key), key, nodeAsMap, level, false, false))
-    } else if (node.isInstanceOf[ArrayList[LinkedHashMap[String, Object]]]) {
-      println(" ")
-      var newLevel = level + 1
-      var nodeAsList = node.asInstanceOf[ArrayList[LinkedHashMap[String, Object]]]
-      println(" ")
-      traverseList(nodeAsList, newLevel)
-    } else printNodeValue(node)
   }
-  
+
   /**
    * Returns true if it looks as though <tt>valueStr</tt> could be evaluated as an arithmetic expression.
    */
-  def containsArithmeticExpression(valueStr :String):Boolean = {
-     if (valueStr.trim().length > 0) {
-        //if result contains alpha characters, don't try to evaluate it mathematically
-        ALPHA_PATTERN.findFirstIn(valueStr) match {
-          case Some(alphaFound) => false
-          case None             => {
-            ARITHMETIC_EXPR_PATTERN.findFirstIn(valueStr) match {
-              case Some(mathFound) => true
-              case None => false
-            }
+  def containsArithmeticExpression(valueStr: String): Boolean = {
+    if (valueStr.trim().length > 0) {
+      //if result contains alpha characters, don't try to evaluate it mathematically
+      ALPHA_PATTERN.findFirstIn(valueStr) match {
+        case Some(alphaFound) => false
+        case None => {
+          ARITHMETIC_EXPR_PATTERN.findFirstIn(valueStr) match {
+            case Some(mathFound) => true
+            case None            => false
           }
         }
-      } else {
-        false
       }
+    } else {
+      false
+    }
   }
 
   /**
@@ -289,27 +277,26 @@ object EntityGenerator {
       case Some(lookupStr) => {
         var tableName: String = lookupStr.group(1).trim()
         var yParam: String = lookupStr.group(2).trim()
-        
+
         //TODO if yParam is an arithmetic expression, try to resolve it first before doing the lookup
         if (yParam.trim().length > 0 && containsArithmeticExpression(yParam)) {
-           yParam = evaluateAsArithmetic(yParam)
+          yParam = evaluateAsArithmetic(yParam)
         }
-        
+
         var xParm: Option[String] = None
         Try(
           if (lookupStr.group(3) != null) {
             var x = lookupStr.group(3)
             xParm = Some(x.trim())
-            
+
             //TODO if xParm is an arithmetic expression, try to resolve it first before doing the lookup
             xParm match {
               case Some(xParam) => {
-               xParm = Some(evaluateAsArithmetic(xParam))
+                xParm = Some(evaluateAsArithmetic(xParam))
               }
             }
           })
 
-        
         var table: Option[LookupTable] = tableManager.get(tableName)
         table.foreach(t =>
           xParm match {
@@ -334,7 +321,7 @@ object EntityGenerator {
 
   /**
    *
-   * TODO use a more efficient means of evaluation.
+   * 
    */
   def evaluateAsArithmetic(strExpr: String): String = {
     val arithmeticResult = toolbox.eval(toolbox.parse(strExpr))
@@ -355,19 +342,19 @@ object EntityGenerator {
    * Recursive.
    */
   def findNode(node: Object, targetAddr: Array[String]): Option[Object] = {
-    if (node.isInstanceOf[LinkedHashMap[String, Object]]) {
-      var nodeAsMap = node.asInstanceOf[LinkedHashMap[String, Object]]
-      var restOfAddr: Array[String] = Array()
-      if (targetAddr.length > 0) {
-        if (targetAddr.length > 1) {
-          restOfAddr = Arrays.copyOfRange(targetAddr, 1, targetAddr.length)
+    node match {
+      case nodeAsMap: LinkedHashMap[String, Object] => {
+        var restOfAddr: Array[String] = Array()
+        if (targetAddr.length > 0) {
+          if (targetAddr.length > 1) {
+            restOfAddr = Arrays.copyOfRange(targetAddr, 1, targetAddr.length)
+          }
+          findNode(nodeAsMap.get(targetAddr(0)), restOfAddr)
+        } else {
+          Some(node) // default
         }
-        findNode(nodeAsMap.get(targetAddr(0)), restOfAddr)
-      } else {
-        Some(node) // default
       }
-    } else {
-      Some(node) // default
+      case _ => Some(node)
     }
   }
 
