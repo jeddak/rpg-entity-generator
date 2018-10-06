@@ -56,7 +56,7 @@ The chief means of attack is the powerful bite, followed by claw rakes. A hungry
     Brawn:  \% ( {template/stats/STR} + {template/stats/SIZ} ) +20  \%
     Endurance: \% {template/stats/CON} * 5 \%
     Evade: \%( {template/stats/DEX} * 3 ) + 10  \%
-    Perception: \% ((({template/stats/INS} + {template/stats/POW}) *2 ) *3) \%
+    Perception: \% ((({template/stats/INS} + {template/stats/POW}) *2 ) *2) \%
     Stealth: \% (( {template/stats/DEX} + {template/stats/INS} * 2) + 10) \% 
     Track:  \% (( {template/stats/INS} + {template/stats/CON} ) * 2) + 4\% 
     Willpower: \% ( {template/stats/INS} * 4)   \%

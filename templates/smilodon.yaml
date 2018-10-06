@@ -82,7 +82,7 @@ prey.
     Endurance: \% {template/stats/CON} * 5 \% 
     Evade: \%( {template/stats/DEX} * 3 ) + 4 \% 
     Perception: \% ((({template/stats/INS} + {template/stats/POW}) *2 ) *2 ) + 10 \%
-    Stealth: \% (( {template/stats/DEX} + {template/stats/INS} * 2) + 10 ) * 3 \% 
+    Stealth: \% (( {template/stats/DEX} + {template/stats/INS} * 2) + 10 ) *2  \% 
     Track:  \% ( {template/stats/INS} + {template/stats/CON} -1 ) * 3\%
     Willpower: \% ( {template/stats/INS} * 3) + 5   \% 
 

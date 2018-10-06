@@ -8,6 +8,7 @@ template:
   weight: \% [Human Weight|{template/build}|{template/stats/SIZ}] \%
   sex:  \% [Sex|1d2] \%
   name: \% [Names|{template/sex}|1d4391] \%
+  age: 18
   stats:
     STR: \% 3d6 \%
     CON: \% 3d6 \%
