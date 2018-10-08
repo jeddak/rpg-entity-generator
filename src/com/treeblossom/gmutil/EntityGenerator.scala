@@ -1,9 +1,14 @@
 package com.treeblossom.gmutil
+
 import java.io.FileReader
 import java.io.Reader
 import java.util.ArrayList
 import java.util.Arrays
 import java.util.Date
+import java.lang.Float
+import java.lang.Double
+import java.lang.Long
+import java.lang.Boolean
 import java.util.LinkedHashMap
 
 import scala.collection.JavaConverters._
@@ -50,28 +55,44 @@ object EntityGenerator {
    *
    */
   def traverse(node: Object, name: String, parent: Object, level: Int, isInArrayList: Boolean, isFirstInArrayList: Boolean): Unit = {
-    var output =
-      if (isInArrayList) {
-        name + INDICATOR_KEY_VAL_SEPARATOR
-      } else {
-        FILL.substring(0, level * INDENT) + name + INDICATOR_KEY_VAL_SEPARATOR
-      }
-    print(output)
+    var outputEntity: OutputEntity = null
     node match {
       case nodeAsMap: LinkedHashMap[String, Object] => {
+        outputEntity = new OutputEntity("\n<" + name + ">", "\n</" + name + ">")
+        print(formatTagOutput(true,outputEntity.startingTag,level))
         var keys = nodeAsMap.keySet().asScala
         keys.map(key => traverse(nodeAsMap.get(key), key, nodeAsMap, level + 1, false, false))
+        print(formatTagOutput(true,outputEntity.endingTag,level))
       }
-      case nodeAsList: ArrayList[LinkedHashMap[String, Object]] => traverseList(nodeAsList, level + 1)
-      case nodeStr: String => {
-        var resolved = extractNodeValueAsString(nodeStr)
+      case nodeAsList: ArrayList[LinkedHashMap[String, Object]] => {
+        outputEntity = new OutputEntity("\n<" + name + ">", "\n</" + name + ">")
+        print(formatTagOutput(true,outputEntity.startingTag,level))
+        traverseList(nodeAsList, level + 1)
+        print(formatTagOutput(true,outputEntity.endingTag,level))
+      }
+      case _ => {
+        outputEntity = new OutputEntity("\n<" + name + ">", "</" + name + ">")
+        print(formatTagOutput(isInArrayList,outputEntity.startingTag,level))
+        var resolved = extractNodeValueAsString(node)
         parent match {
           case pMap: LinkedHashMap[String, Object] => pMap.put(name, resolved)
         }
-        println(resolved)
+        print(resolved)
+        print(formatTagOutput(false,outputEntity.endingTag,level))
       }
-      case _ => Unit
     }
+       
+  }
+
+  /**
+   * 
+   */
+  def formatTagOutput(shouldIndent: Boolean, tag: String, level: Int) = {
+      if (!shouldIndent) {
+        tag
+      } else {
+        FILL.substring(0, level * INDENT) + tag
+      }
   }
 
   /**
@@ -81,13 +102,17 @@ object EntityGenerator {
     node match {
       case str: String   => resolveNodeValue(str)
       case intg: Integer => intg.toString
+      case long: Long    => long.toString
+      case flot: Float   => flot.toString
+      case doub: Double  => doub.toString
       case date: Date    => date.toString
+      case boo: Boolean  => boo.toString
       case _             => ""
     }
   }
 
   /**
-   * Walk an unnamed node
+   * Walk an unnamed yaml node.
    *
    *
    */
@@ -152,14 +177,19 @@ object EntityGenerator {
    *
    */
   def outputStringMapEntry(key: String, value: String, level: Int, isFirst: Boolean) {
+
+     val outputEntity = new OutputEntity("\n<" + key + ">", "</" + key + ">")
+        print(formatTagOutput(false,outputEntity.startingTag,level))
+
     var newVal = resolveNodeValue(value)
-    var output =
-      if (!isFirst) {
-        FILL.substring(0, (level * INDENT))
-      } else {
-        FILL.substring(0, (level * INDENT) - INDENT) + INDICATOR_SEQUENCE_ENTRY
-      }
-    println(output + key + INDICATOR_KEY_VAL_SEPARATOR + newVal)
+//    var output =
+//      if (!isFirst) {
+//        FILL.substring(0, (level * INDENT))
+//      } else {
+//        FILL.substring(0, (level * INDENT) - INDENT) + INDICATOR_SEQUENCE_ENTRY
+//      }
+    print(newVal)
+    print(formatTagOutput(false,outputEntity.endingTag,level))
   }
 
   /**
@@ -182,7 +212,7 @@ object EntityGenerator {
     var matches: Option[Regex.Match] = EVAL_PATTERN.findFirstMatchIn(result)
     matches.foreach { mach => result = mach.group(1) }
     if (result.length() < trimmedStr.length) {
-      result = resolveReferences(result) // not working for template/weight
+      result = resolveReferences(result)
       result = resolveDiceRollSpecs(result)
       result = resolveTableLookups(result)
       if (result.trim().length > 0 && containsArithmeticExpression(result)) {
