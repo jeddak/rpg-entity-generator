@@ -77,6 +77,10 @@ object TableManager {
     lookupTables.put(tableName, newLookupTable)
   }
   
+  /**
+   * retrieve the table named <i>tableName</i>
+   * @param tableName
+   */
   def get(tableName:String):Option[LookupTable] = {
     lookupTables.get(tableName)
   }

@@ -22,7 +22,7 @@ import scala.collection.convert.Wrappers
 import scala.util.{ Try, Success, Failure }
 
 /**
- * 
+ * Main program.
  */
 object EntityGenerator {
   val INDENT: Integer = 2
@@ -58,30 +58,37 @@ object EntityGenerator {
     var outputEntity: OutputEntity = null
     node match {
       case nodeAsMap: LinkedHashMap[String, Object] => {
-        outputEntity = new OutputEntity("\n<" + name + ">", "\n</" + name + ">")
-        print(formatTagOutput(true,outputEntity.startingTag,level))
+        if (name.length > 0) {
+          outputEntity = new OutputEntity("\n<" + name + ">", "\n</" + name + ">")
+          print(formatTagOutput(true, outputEntity.startingTag, level))
+        }
         var keys = nodeAsMap.keySet().asScala
         keys.map(key => traverse(nodeAsMap.get(key), key, nodeAsMap, level + 1, false, false))
-        print(formatTagOutput(true,outputEntity.endingTag,level))
+        if (name.length > 0) {
+          print(formatTagOutput(true, outputEntity.endingTag, level))
+        }
       }
       case nodeAsList: ArrayList[LinkedHashMap[String, Object]] => {
         outputEntity = new OutputEntity("\n<" + name + ">", "\n</" + name + ">")
-        print(formatTagOutput(true,outputEntity.startingTag,level))
+        print(formatTagOutput(true, outputEntity.startingTag, level))
         traverseList(nodeAsList, level + 1)
-        print(formatTagOutput(true,outputEntity.endingTag,level))
+        print(formatTagOutput(true, outputEntity.endingTag, level))
       }
       case _ => {
+
         outputEntity = new OutputEntity("\n<" + name + ">", "</" + name + ">")
-        print(formatTagOutput(isInArrayList,outputEntity.startingTag,level))
+        print(formatTagOutput(isInArrayList, outputEntity.startingTag, level))
         var resolved = extractNodeValueAsString(node)
-        parent match {
-          case pMap: LinkedHashMap[String, Object] => pMap.put(name, resolved)
+        if (resolved.length() != 0) {
+          parent match {
+            case pMap: LinkedHashMap[String, Object] => pMap.put(name, resolved)
+          }
+          print(resolved)
+          print(formatTagOutput(false, outputEntity.endingTag, level))
         }
-        print(resolved)
-        print(formatTagOutput(false,outputEntity.endingTag,level))
       }
     }
-       
+
   }
 
   /**
@@ -445,6 +452,6 @@ object EntityGenerator {
     //var keyStr = "0-9"
    //println(keyStr + " " + new LookupTable("p").keyUsesRangeSyntax(keyStr))
     
-   traverse(rootNode, "template", null, 0, false, false)
+   traverse(rootNode, "", null, 0, false, false)
   }
 }

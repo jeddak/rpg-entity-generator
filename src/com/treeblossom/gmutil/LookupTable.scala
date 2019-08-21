@@ -6,6 +6,10 @@ import scala.util.matching.Regex
 import scala.collection.mutable.Map
 
 /**
+ * A type of dictionary
+ * allowing lookups by key or by <i>range of keys</i>.
+ * May be one-dimensional (like a HashTable), 
+ * or two-dimensional (like a Map of Maps), where the keys are analogous to Cartesian x.y coordinates.
  * @author jdonald
  *
  */
@@ -20,7 +24,8 @@ class LookupTable(val name: String) {
   var xKeyUsesRange: Boolean = false
 
   /**
-   * 
+   * Returns <code>true</code> if the <i>keyStr</i> uses the Range Syntax,
+   * and <code>false</code> if otherwise.
    */
   def keyUsesRangeSyntax(keyStr: String): Boolean = {
     var result: Boolean = false
@@ -40,6 +45,7 @@ class LookupTable(val name: String) {
   }
 
   /**
+   * Store a value in a one-dimensional LookupTable.
    * @param yKey
    * @param value
    */
@@ -115,7 +121,7 @@ class LookupTable(val name: String) {
   }
 
   /**
-   * 
+   * Retrieve a table value where the lookup key is a range of values.
    */
   def getValByRange(key: String, theMap: Map[String, String]): Option[String] = {
     theMap.keysIterator.map(key => {
@@ -135,7 +141,7 @@ class LookupTable(val name: String) {
   }
 
   /**
-   * 
+   * Retrieve a Map from a two-dimensional LookupTable.
    */
   def getMapByRange(yKey: String): Option[Map[String, String]] = {
     twoDimMap.keysIterator.map(key => {
@@ -155,6 +161,7 @@ class LookupTable(val name: String) {
   }
 
   /**
+   * Retrieve a value from a two-dimensional LookupTable.
    * @param yKey
    * @param xKey
    * @return
