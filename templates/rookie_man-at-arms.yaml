@@ -1,14 +1,13 @@
 template:
   template_name: Rookie Man-At-Arms
   Description: A young, green medieval soldier armed similarly to a knight
-  # lithe 1, medium 2, heavy 3
   buildnum: \% 1D3 \%
   build: \%  [Build| {template/buildnum}] \%
   height: \% [Human Height|{template/stats/SIZ}] \%
   weight: \% [Human Weight|{template/build}|{template/stats/SIZ}] \%
   sex:  \% [Sex|1d2] \%
   name: \% [Names|{template/sex}|1d4391] \%
-  age: 18
+  age: 18 
   stats:
     STR: \% 3d6 \%
     CON: \% 3d6 \%
@@ -26,36 +25,43 @@ template:
       initiative_bonus   : \%   ( {template/stats/INT} + {template/stats/DEX} ) / 2   \%
       movement           : 6
       magic_points       : \% {template/stats/POW} \%
-  hit_locations: 
-    - ap   : 3
-      range: 01-03 
-      hp   : \% ( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5   \%
-      name : Right leg
-    - ap   : 3 
-      range: 04-06 
-      hp   : \% ( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5   \%
-      name : Left leg
-    - ap: 3 
-      range: 07-09 
-      hp: \% (( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5 ) + 1  \%
-      name: Abdomen
-    - ap: 3 
-      range: 10-12 
-      hp: \% (( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5 ) + 2  \%
-      name: Chest
+  hit_locations :  &id002
+      hit_location1:
+          ap   : 3
+          range: 01-03 
+          hp   : \% ( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5   \%
+          name : Right leg
+      hit_location2:
+          ap   : 3 
+          range: 04-06 
+          hp   : \% ( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5   \%
+          name : Left leg
+      hit_location3: 
+          ap: 3 
+          range: 07-09 
+          hp: \% (( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5 ) + 1  \%
+          name: Abdomen
+      hit_location4:
+          ap: 3 
+          range: 10-12 
+          hp: \% (( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5 ) + 2  \%
+          name: Chest
       # formula doesn't work for arms when (CON+SIZ) <=5
-    - ap: 3 
-      range: 13-15 
-      hp: \% (( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5  ) - 1  \%
-      name: Right Arm
-    - ap: 3 
-      range: 16-18 
-      hp: \% (( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5 ) - 1  \%
-      name: Left Arm
-    - ap: 3 
-      range: 19-20 
-      hp: \% ( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5   \%
-      name: Head
+      hit_location5:
+          ap: 3 
+          range: 13-15 
+          hp: \% (( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5  ) - 1  \%
+          name: Right Arm
+      hit_location6:
+          ap: 3 
+          range: 16-18 
+          hp: \% (( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5 ) - 1  \%
+          name: Left Arm
+      hit_location7:
+          ap: 3 
+          range: 19-20 
+          hp: \% ( {template/stats/CON} + {template/stats/SIZ} -1 ) / 5   \%
+          name: Head
   standard_skills:
     Athletics: \%{template/stats/STR} + {template/stats/DEX} \% 
     Boating: \%{template/stats/STR} + {template/stats/CON} \%
@@ -66,11 +72,11 @@ template:
     Deceit: \%{template/stats/INT} + {template/stats/CHA} \%
     Endurance: \%{template/stats/CON} * 2 \%
     Evade: \%{template/stats/DEX} * 2 \%
-    First Aid: \%{template/stats/DEX} + {template/stats/INT} \%
+    First_Aid: \%{template/stats/DEX} + {template/stats/INT} \%
     Influence: \%{template/stats/CHA} * 2 \%
     Insight: \%{template/stats/INT} + {template/stats/POW} \%
     Locale: \%{template/stats/INT} * 2 \%
-    Native tongue: \%{template/stats/INT} + {template/stats/CHA} \%
+    Native_Tongue: \%{template/stats/INT} + {template/stats/CHA} \%
     Perception: \%{template/stats/INT} + {template/stats/POW} \%
     Ride:  \%{template/stats/DEX} + {template/stats/POW} \%
     Sing: \%{template/stats/POW} + {template/stats/CHA} \%
@@ -117,8 +123,9 @@ template:
     Trance: \%{template/stats/POW} + {template/stats/CON}\%
   other_languages: none
   combat_styles:
-    - name: Man-at-Arms 
-      value: \% 2d20+45 \%
-  weapons: \{  \% [Medieval Weapons|Broadsword], [Medieval Weapons|Chevron], [Medieval Weapons|Longspear] \%    \}
+      combat_style:
+          name: Man-at-Arms 
+          value: \% 2d20+45 \%
+  weapons: \{  \% [Medieval Weapons|Broadsword] [Medieval Weapons|Chevron] [Medieval Weapons|Longspear] \%    \}
   
   notes: Quilted Leather
