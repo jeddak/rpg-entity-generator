@@ -15,13 +15,6 @@ template:
   Core_Sense_of_Humor: \% [personality_sense_of_humor|1D100] \%
   Core_Disclosure: \% 1D100 \%
   Core_Conformity: \% 1D100 \%
-  Sex_Orientation: \% [personality_sex_orientation|1D100] \%
-  Sex_Libido: \% 1D100 \%
-  Sex_Expressiveness: \% 1D100 \%
-  Sex_Expressive_Style: \% 1D100 \%
-  Sex_Openness: \% 1D100 \%
-  Sex_Promiscuity: \% 1D100 \%
-  Sex_Tastes: \% [personality_sex_tastes|1D100] \%
   Religious_Adherence_Score: \% 1D100 \%
   Religious_Adherence_Desc: \% [personality_religious_adherence|{template/Religious_Adherence_Score}] \%
   Religious_Tolerance: \% 1D100 \%
